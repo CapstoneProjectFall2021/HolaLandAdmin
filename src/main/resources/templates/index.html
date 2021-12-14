@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" th:href="@{/css/all.css}"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}"/>
+  <!-- Data Table -->
+  <link rel="stylesheet" th:href="@{/css/datatable/table.css}">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" th:href="@{/css/hola-land/common.css}"/>
+  <link rel="stylesheet" th:href="@{/css/hola-land/dashboard.css}"/>
+
+  <title>Dashboard</title>
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:replace="common/sidebar :: sidebar"></div>
+
+    <div id="content-wrapper">
+      <div th:replace="common/navbar :: navbar"></div>
+
+      <div class="container-fluid">
+        <th:block th:if="${page == 1}">
+          <div th:replace="dashboard/dashboard :: dashboard"></div>
+        </th:block>
+        <th:block th:if="${page == 2}">
+          <div th:replace="user/all :: all"></div>
+        </th:block>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Modal logout-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="text-danger mb-4">
+              <i class="fas fa-exclamation-triangle fa-3x"></i>
+            </div>
+            <h4>Bạn chắc chắn muốn thoát?</h4>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger">Đăng xuất</button>
+          <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div style="position: fixed; bottom: 14px; right: 14px; z-index: 9999;">
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+      <div class="toast-header">
+        <strong class="mr-auto">Thông báo</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Thêm tài khoản mới thành công!
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script th:src="@{/js/bootstrap/popper.min.js}"></script>
+  <script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script th:src="@{/js/hola-land/holaland.js}"></script>
+  <script th:src="@{/js/datatables/jquery.min.js}"></script>
+  <script th:src="@{/js/datatables/jquery.dataTables.min.js}"></script>
+  <script th:src="@{/js/datatables/datatables.vietnamese.js}"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#myToast").click(function() {
+        $('.toast').toast('show');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

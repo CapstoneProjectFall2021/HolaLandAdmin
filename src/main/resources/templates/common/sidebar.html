@@ -1,0 +1,96 @@
+<!-- Sidebar -->
+<ul class="sidebar navbar-nav sidebar-fixed" th:fragment="sidebar">
+  <li class="nav-item">
+    <a class="nav-link" href="">
+      <h3>FMS</h3>
+    </a>
+  </li>
+  <li class="nav-item" th:classappend="${page == 1 ? 'active' : ''}">
+    <a class="nav-link" th:href="@{/}">
+      <i class="fas fa-tachometer-alt fa-fw"></i>
+      <span>Dashboard</span>
+    </a>
+  </li>
+  <li class="nav-item dropdown" th:classappend="${page == 2 ? 'active' : ''}">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-users fa-fw"></i>
+      <span>Tài khoản</span>
+      <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="userDropdown">
+      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Tất cả</a>
+      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Người dùng</a>
+      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Người tuyển dụng</a>
+      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Người bán hàng</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="fptuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-university fa-fw"></i>
+      <span>FPT University</span>
+      <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="fptuDropdown">
+      <a class="dropdown-item" href=""><i class="fas fa-user-friends fa-fw mr-2"></i>Câu lạc bộ</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-user-check fa-fw"></i>
+      <span>Việc làm</span>
+      <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="workDropdown">
+      <a class="dropdown-item" href=""><i class="fas fa-list-ul fa-fw mr-2"></i>Tìm việc làm</a>
+      <a class="dropdown-item" href=""><i class="fas fa-search fa-fw mr-2"></i>Tuyển người làm</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="foodDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-pizza-slice fa-fw"></i>
+      <span>Dịch vụ ăn - uống</span>
+      <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="foodDropdown">
+      <a class="dropdown-item" href=""><i class="fas fa-store fa-fw mr-2"></i>Cửa hàng online</a>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="trafficDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-bus-alt fa-fw"></i>
+      <span>Giao thông</span>
+      <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="trafficDropdown">
+      <a class="dropdown-item" href=""><i class="fas fa-bus-alt fa-fw mr-2"></i>Xe bus</a>
+      <a class="dropdown-item" href=""><i class="fas fas fa-motorcycle fa-fw mr-2"></i>Xe ôm</a>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="javascript:void(0)" id="myToast">
+      <i class="fas fa-angle-double-right fa-fw"></i>
+      <span>Test Toasts</span>
+    </a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="settingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-cog fa-fw"></i>
+      <span>Setting</span>
+      <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="settingDropdown">
+      <h6 class="dropdown-header">Email:</h6>
+      <a class="dropdown-item" href=""><i class="fas fa-wrench fa-fw mr-2"></i>Config</a>
+      <a class="dropdown-item" href=""><i class="far fa-envelope fa-fw mr-2"></i>Content</a>
+      <div class="dropdown-divider"></div>
+      <h6 class="dropdown-header">Other:</h6>
+      <a class="dropdown-item" href="">404 Page</a>
+      <a class="dropdown-item" href="">Blank Page</a>
+    </div>
+  </li>
+  <li class="nav-item btn-toggle">
+    <a class="nav-link" href="javascript:void(0)" id="btn-sidebar-toggle">
+      <i class="fas fa-angle-left fa-fw"></i>
+    </a>
+  </li>
+</ul>

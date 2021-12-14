@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" th:href="@{/css/all.css}"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" th:href="@{/css/hola-land/form.css}"/>
+
+  <title>Đăng nhập</title>
+</head>
+
+<body>
+<div id="intro">
+  <div class="middle signin">
+    <div class="login-panel">
+      <div class="logo text-center">
+        <a href="index.jsp">HOLA LAND</a>
+      </div>
+      <p class="notification"> ${message}&nbsp; </p>
+      <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+        <div class="form-group">
+          <label>
+            <i class="far fa-envelope fa-fw"></i>
+          </label>
+          <input type="email" class="form-control" placeholder="Email" name="email">
+        </div>
+        <div class="form-group">
+          <label>
+            <i class="fas fa-key fa-fw"></i>
+          </label>
+          <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+        </div>
+        <div class="form-group">
+          <div class="col">
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="remember-me">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Ghi nhớ tài khoản</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col">
+            <button type="submit" class="btn btn-sm">
+              <i class="fas fa-sign-in-alt mr-2"></i>Đăng nhập
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col">
+            <a class="link-effect" href="#">
+              <i class="fas fa-edit fa-fw mr-1"></i>Đăng ký
+            </a>
+            <a class="link-effect float-right" href="#">
+              <i class="fas fa-question fa-fw mr-1"></i>Quên mật khẩu?
+            </a>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>
+    © 2021 Hola Land Management System
+  </p>
+</footer>
+
+<!-- Bootstrap core JavaScript-->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
+<script th:src="@{/js/bootstrap/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap/bootstrap.min.js}"></script>
+
+</body>
+
+</html>
