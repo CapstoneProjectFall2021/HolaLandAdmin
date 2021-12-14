@@ -17,7 +17,7 @@ var vietnamese = {
 };
 
 $(document).ready(function() {
-  var dtable = $('#user-table').dataTable({
+  var dtable = $('#user-table, #food-table').dataTable({
     "oLanguage": vietnamese
   });
 });

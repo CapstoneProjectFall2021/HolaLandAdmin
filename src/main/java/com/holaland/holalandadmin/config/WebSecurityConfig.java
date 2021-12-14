@@ -34,10 +34,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/css/**", "/images/**", "/js/**", "/webfonts/**").permitAll();
-        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/register").permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/login", "/logout", "/register").permitAll();
+        //http.authorizeRequests().anyRequest().authenticated();
 
-        //http.authorizeRequests().antMatchers("/works").hasAnyRole("MEMBER");
+        http.authorizeRequests().antMatchers("/**").hasAnyRole("ADMIN");
 //        http.authorizeRequests().antMatchers("/fpt-university/department/**", "/fpt-university/lecturers/**", "/works/create-request-find-job", "/works/request-find-job-manage/**", "/works/jobs-save", "/works/jobs-apply").hasAnyRole("MEMBER");
 //        http.authorizeRequests().antMatchers("/profile/**").hasAnyRole("MEMBER", "RECRUITER", "SELLER");
 //        http.authorizeRequests().antMatchers("/store/**").hasAnyRole("SELLER");
