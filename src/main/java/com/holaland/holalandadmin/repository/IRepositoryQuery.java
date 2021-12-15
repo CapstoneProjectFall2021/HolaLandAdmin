@@ -14,6 +14,14 @@ public interface IRepositoryQuery {
             "AND T1.user_status_id = 1\n" +
             "AND T1.user_deleted = 0";
 
+    String GET_ALL_USER_BY_USER_ROLE = "SELECT DISTINCT T1.user_detail_id, T1.user_id, T1.user_name, T1.user_dob, T1.user_gender, T1.user_phone, T1.user_email\n" +
+            "FROM user_detail T1\n" +
+            "LEFT JOIN user_role T2\n" +
+            "ON T1.user_id = T2.user_id\n" +
+            "LEFT JOIN user T3\n" +
+            "ON T1.user_id = T3.user_id\n" +
+            "WHERE role_id BETWEEN 1 AND 4 AND T3.user_deleted = 0";
+
     String USER_DETAIL_GET_ALL = "SELECT * FROM user_detail";
     String USER_DETAIL_GET_ONE_BY_USER_ID = "SELECT * FROM user_detail WHERE user_id = ?";
 

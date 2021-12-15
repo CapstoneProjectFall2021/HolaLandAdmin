@@ -14,171 +14,27 @@
         <thead>
         <tr>
           <th class="text-center">#</th>
-          <th>Mã đơn hàng<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-center">Thời gian<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-right">Tổng tiền<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-right">Trạng thái<i class="fas fa-sort fa-size"></i></th>
+          <th>Tên<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Ngày sinh<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Giới tính<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">SĐT<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Email<i class="fas fa-sort fa-size"></i></th>
           <th class="text-right">Thêm<i class="fas fa-sort fa-size"></i></th>
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr th:each = "info : ${getAllUserInfo}">
           <td class="text-center">1</td>
-          <td><a href="">#000001</a></td>
+          <td><a href=""><span th:text = "*{info.userDetailName}"></span></a></td>
           <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
+            <i class="bi bi-calendar3-week me-1"></i><span th:text = "*{#dates.format(info.userDetailDob, 'dd-MM-yyyy')}"></span>
           </td>
-          <td class="text-right">50.000<sup>đ</sup></td>
-          <td class="text-secondary text-right">Đã từ chối</td>
+          <td class="text-right"><span th:text = "*{info.userDetailGender}"></span></td>
+          <td class="text-secondary text-right"><span th:text = "*{info.userDetailPhone}"></span></td>
+          <td class="text-right"><span th:text = "*{info.userDetailEmail}"></span></td>
           <td class="text-right">
             <a href="javascript:void(0)" class="text-info" data-bs-toggle="modal" data-bs-target="#reasonRejectionOrderModal">
               <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">2</td>
-          <td><a href="">#000002</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">20.000<sup>đ</sup></td>
-          <td class="text-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-info mr-2" data-bs-toggle="modal" data-bs-target="#reportOrderContentModal">
-              <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"></i>
-            </a>
-            <a href="javascript:void(0)" class="color-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteReportOrderModal">
-              <i class="far fa-trash-alt" data-bs-placement="top" data-bs-toggle="tooltip" title="Xoá báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">3</td>
-          <td><a href="">#000003</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">50.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">4</td>
-          <td><a href="">#000004</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">20.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">5</td>
-          <td><a href="">#000005</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">120.000<sup>đ</sup></td>
-          <td class="text-danger text-right">Đã huỷ</td>
-          <td class="text-right"></td>
-        </tr>
-        <tr>
-          <td class="text-center">6</td>
-          <td><a href="">#000006</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">50.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">7</td>
-          <td><a href="">#000007</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">20.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">8</td>
-          <td><a href="">#000008</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">20.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">9</td>
-          <td><a href="">#000009</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">10.000<sup>đ</sup></td>
-          <td class="text-danger text-right">Đã huỷ</td>
-          <td class="text-right"></td>
-        </tr>
-        <tr>
-          <td class="text-center">10</td>
-          <td><a href="">#000010</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">20.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center">11</td>
-          <td><a href="">#000011</a></td>
-          <td class="text-center">
-            <i class="bi bi-calendar3-week me-1"></i>15-12-2020
-            <i class="far fa-clock ms-2 me-1"></i>18:08:33
-          </td>
-          <td class="text-right">20.000<sup>đ</sup></td>
-          <td class="color-success text-right">Hoàn thành</td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-warning" data-bs-toggle="modal" data-bs-target="#repostOrderModal">
-              <i class="bi bi-exclamation-circle" data-bs-placement="top" data-bs-toggle="tooltip" title="Báo cáo"></i>
             </a>
           </td>
         </tr>

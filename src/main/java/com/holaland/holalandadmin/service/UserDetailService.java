@@ -11,6 +11,8 @@ public interface UserDetailService {
 
     List<UserDetail> getAllUserAppliedByUserId(int id) throws DataAccessException;
 
+    List<UserDetail> getAllUserInfo() throws DataAccessException;
+
     UserDetail getOneByUserId(int id) throws DataAccessException;
 
     boolean update(UserDetail obj) throws DataAccessException;

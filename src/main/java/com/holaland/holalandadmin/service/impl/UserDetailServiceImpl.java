@@ -30,6 +30,11 @@ public class UserDetailServiceImpl implements UserDetailService {
     }
 
     @Override
+    public List<UserDetail> getAllUserInfo() throws DataAccessException {
+        return userDetailRepository.getAllUserInfo();
+    }
+
+    @Override
     public UserDetail getOneByUserId(int id) throws DataAccessException {
         return userDetailRepository.getOneByUserId(id);
     }
