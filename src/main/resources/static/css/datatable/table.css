@@ -86,7 +86,23 @@
   float: right;
 }
 
-#online-store-table_filter {
+#club-table_filter {
+  float: right;
+}
+
+#recruitment-table_filter {
+  float: right;
+}
+
+#find-job-table_filter {
+  float: right;
+}
+
+#bus-table_filter {
+  float: right;
+}
+
+#motorbike-table_filter {
   float: right;
 }
 

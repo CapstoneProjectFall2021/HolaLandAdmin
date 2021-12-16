@@ -1,0 +1,71 @@
+<div th:fragment="club">
+  <!-- Page Heading -->
+  <div class="row title">
+    <div class="col-md-12">
+      <h3>
+        Quản lý câu lạc bộ
+      </h3>
+    </div>
+  </div>
+
+  <div class="row datatable mt-3">
+    <div class="col-lg-12">
+      <table id="club-table" class="table" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th>Tên câu lạc bộ<i class="fas fa-sort fa-size"></i></th>
+          <th>Tên tiếng anh của CLB<i class="fas fa-sort fa-size"></i></th>
+          <th>Loại câu Lạc bộ<i class="fas fa-sort fa-size"></i></th>
+          <th>Miêu tả<i class="fas fa-sort fa-size"></i></th>
+          <th>Tên fanpage<i class="fas fa-sort fa-size"></i></th>
+          <th>Fanpage<i class="fas fa-sort fa-size"></i></th>
+          <th>Số lượng thành viên<i class="fas fa-sort fa-size"></i></th>
+          <th>Tên người liên hệ<i class="fas fa-sort fa-size"></i></th>
+          <th>Email liên hệ<i class="fas fa-sort fa-size"></i></th>
+          <th>Số điện thoại<i class="fas fa-sort fa-size"></i></th>
+          <th>Thành tích<i class="fas fa-sort fa-size"></i></th>
+          <th>Thêm<i class="fas fa-sort fa-size"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "club, stt : ${clubList}">
+          <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
+          <td><span th:text="*{club.fptuClubName}"></span></td>
+          <td><span th:text="*{club.fptuClubNameEn}"></span></td>
+          <td>
+            <th:block th:with="clubType=${clubTypeService.getOne(club.fptuClubTypeId)}">
+              <span th:text="${clubType.fptuClubTypeName}"></span>
+            </th:block>
+          </td>
+          <td>
+            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+              <span class="d-none" th:text="*{club.fptuClubDescription}"></span>
+              Chi tiết
+            </a>
+          </td>
+          <td><span th:text="*{club.fptuClubFanpageName}"></span></td>
+          <td><span th:text="*{club.fptuClubFanpage}"></span></td>
+          <td><span th:text="*{club.fptuClubMemberQuantity}"></span></td>
+          <td><span th:text="*{club.fptuClubContactName}"></span></td>
+          <td><span th:text="*{club.fptuClubContactEmail}"></span></td>
+          <td><span th:text="*{club.fptuClubContactPhoneNumber}"></span></td>
+          <td>
+            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+              <span class="d-none" th:text="*{club.fptuClubAchievements}"></span>
+              Chi tiết
+            </a>
+          </td>
+          <td class="text-right">
+            <a href="javascript:void(0)" class="color-danger">
+              <i class="far fa-trash-alt" onclick="confirmDeleteClub(event)">
+                <span class="d-none" th:text="*{club.fptuClubId}"></span>
+              </i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

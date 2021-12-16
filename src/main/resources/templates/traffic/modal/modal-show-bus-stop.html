@@ -1,0 +1,28 @@
+<!-- Modal show bus stop-->
+<div class="modal fade" id="showBusStopModal" tabindex="-1" aria-labelledby="showBusStopModalLabel"
+     aria-hidden="true" th:fragment="showBusStopModal">
+  <div class="modal-dialog modal-dialog-centered modal-description">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="content">
+          <ul class="timeline">
+            <li class="timeline-item" th:each="stop : ${busStop}">
+              <span th:text="*{stop}"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

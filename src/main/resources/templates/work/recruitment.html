@@ -1,0 +1,121 @@
+<div th:fragment="recruitment">
+  <!-- Page Heading -->
+  <div class="row title">
+    <div class="col-md-12">
+      <h3>
+        Quản lý tuyển người làm
+      </h3>
+    </div>
+  </div>
+
+  <div class="row datatable mt-3">
+    <div class="col-lg-12">
+      <table id="recruitment-table" class="table" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th>Tài khoản đăng<i class="fas fa-sort fa-size"></i></th>
+          <th>Tiêu đề<i class="fas fa-sort fa-size"></i></th>
+          <th>Miêu tả<i class="fas fa-sort fa-size"></i></th>
+          <th>Hình thức làm việc<i class="fas fa-sort fa-size"></i></th>
+          <th>Yêu cầu<i class="fas fa-sort fa-size"></i></th>
+          <th>Quyền lợi<i class="fas fa-sort fa-size"></i></th>
+          <th>Mức lương<i class="fas fa-sort fa-size"></i></th>
+          <th>Đơn vị tính lương<i class="fas fa-sort fa-size"></i></th>
+          <th>Hình thức thanh toán<i class="fas fa-sort fa-size"></i></th>
+          <th>Số lượng tuyển<i class="fas fa-sort fa-size"></i></th>
+          <th>Yêu cầu kinh nghiệm<i class="fas fa-sort fa-size"></i></th>
+          <th>Yêu cầu giới tính<i class="fas fa-sort fa-size"></i></th>
+          <th>Địa điểm<i class="fas fa-sort fa-size"></i></th>
+          <th>Ngày tạo<i class="fas fa-sort fa-size"></i></th>
+          <th>Ngày hết hạn<i class="fas fa-sort fa-size"></i></th>
+          <th>Trạng thái<i class="fas fa-sort fa-size"></i></th>
+          <th>Thêm<i class="fas fa-sort fa-size"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "work, stt : ${workList}">
+          <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
+          <td>
+            <th:block th:with="user=${userDetailService.getOneByUserId(work.userId)}">
+              <span th:text="${user.userDetailEmail}"></span>
+            </th:block>
+          </td>
+          <td><span th:text="*{work.workRequestRecruitmentTitle}"></span></td>
+          <td>
+            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+              <span class="d-none" th:text="*{work.workRequestRecruitmentDescription}"></span>
+              Chi tiết
+            </a>
+          </td>
+          <td>
+            <th:block th:with="type=${workRequestTypeService.getOne(work.workRequestTypeId)}">
+              <span th:text="*{type.workRequestTypeName}"></span>
+            </th:block>
+          </td>
+          <td>
+            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+              <span class="d-none" th:text="*{work.workRequestRecruitmentRequirement}"></span>
+              Chi tiết
+            </a>
+          </td>
+          <td>
+            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+              <span class="d-none" th:text="*{work.workRequestRecruitmentBenefit}"></span>
+              Chi tiết
+            </a>
+          </td>
+          <td><span th:text="*{work.workRequestRecruitmentSalary}"></span></td>
+          <td>
+            <th:block th:with="unit=${workSalaryUnitService.getOne(work.workSalaryUnitId)}">
+              <span th:text="${unit.workSalaryUnitName}"></span>
+            </th:block>
+          </td>
+          <td>
+            <th:block th:with="payment=${workPaymentMethodService.getOne(work.workPaymentMethodId)}">
+              <span th:text="${payment.workPaymentMethodName}"></span>
+            </th:block>
+          </td>
+          <td><span th:text="*{work.workRequestRecruitmentQuantity}"></span></td>
+          <td><span th:text="*{work.workRequestRecruitmentExperienceRequirement ? 'Có' : 'Không'}"></span></td>
+          <td><span th:text="*{work.workRequestRecruitmentGenderRequirement ? 'Có' : 'Không'}"></span></td>
+          <td>
+            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+              <span class="d-none" th:text="*{work.workRequestRecruitmentWorkLocation}"></span>
+              Chi tiết
+            </a>
+          </td>
+          <td><span th:text="*{#dates.format(work.workRequestRecruitmentStartDateTime, 'dd-MM-yyyy')}"></span></td>
+          <td><span th:text="*{#dates.format(work.workRequestRecruitmentEndDateTime, 'dd-MM-yyyy')}"></span></td>
+          <td>
+            <span th:classappend="*{work.sttWorkCode == 1 ? 'text-info'
+            : (work.sttWorkCode == 2 ? 'text-secondary'
+            : (work.sttWorkCode == 3 ? 'text-warning'
+            : (work.sttWorkCode == 4 ? 'color-success' : 'text-danger')))}"
+                  th:text="*{work.sttWorkCode == 1 ? 'Đang chờ duyệt'
+            : (work.sttWorkCode == 2 ? 'Từ chối duyệt'
+            : (work.sttWorkCode == 3 ? 'Đã duyệt'
+            : (work.sttWorkCode == 4 ? 'Hoàn thành' : 'Hết hạn')))}">
+            </span>
+          </td>
+          <td class="text-right">
+            <th:block th:if="*{work.workRequestRecruitmentNote != null}">
+              <a href="javascript:void(0)" class="text-info">
+                <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"
+                   onclick="showContent(event)">
+                  <span class="d-none" th:text="*{work.workRequestRecruitmentNote}"></span>
+                </i>
+              </a>
+            </th:block>
+            <a href="javascript:void(0)" class="color-danger">
+              <i class="far fa-trash-alt" onclick="confirmDeleteRecruitment(event)">
+                <span class="d-none" th:text="*{work.workRequestRecruitmentId}"></span>
+              </i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
