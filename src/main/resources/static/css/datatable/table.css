@@ -86,6 +86,7 @@
   float: right;
 }
 
+
 #club-table_filter {
   float: right;
 }
@@ -103,6 +104,11 @@
 }
 
 #motorbike-table_filter {
+  float: right;
+}
+
+#online-store-table_filter {
+
   float: right;
 }
 

@@ -17,11 +17,12 @@ var vietnamese = {
 };
 
 $(document).ready(function() {
-  var dtable = $('#user-table, #food-table, #club-table, #recruitment-table, #find-job-table, #bus-table, #motorbike-table').dataTable({
+
+  var dtable = $('#user-table, #food-table, #club-table, #recruitment-table, #find-job-table, #bus-table, #motorbike-table, #online-store-table' ).dataTable({
     "oLanguage": vietnamese
   });
 });
 
 $(document).ready(function() {
-  $('#user-table, #club-table, #recruitment-table, #find-job-table, #bus-table, #motorbike-table').DataTable();
+  $('#user-table, #club-table, #recruitment-table, #find-job-table, #bus-table, #motorbike-table, #online-store-table').DataTable();
 });
