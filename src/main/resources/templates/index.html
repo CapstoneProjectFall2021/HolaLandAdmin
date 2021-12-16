@@ -44,21 +44,33 @@
         <th:block th:if="${page == 5}">
           <div th:replace="work/find-job :: find-job"></div>
         </th:block>
+        <th:block th:if="${page == 6}">
+          <div th:replace="food/online-store :: online-store"></div>
+        </th:block>
         <th:block th:if="${page == 7}">
           <div th:replace="traffic/bus :: bus"></div>
         </th:block>
         <th:block th:if="${page == 8}">
           <div th:replace="traffic/motorbike-taxi-drivers :: motorbike-taxi-drivers"></div>
-        </th:block>
       </div>
     </div>
   </div>
+
 
   <th:block>
     <div th:replace="common/modal/modal-show-content :: showContentModal"></div>
     <div th:replace="common/modal/modal-confirm-delete :: confirmDeleteModal"></div>
   </th:block>
 
+  <!-- Modal  -->
+  <th:block th:if="${page == 2}">
+    <!-- Import modal confirm delete user -->
+    <div th:replace="user/modal/modal-confirm-delete-user :: confirmDeleteUserModal"></div>
+  </th:block>
+  <th:block th:if="${page == 6}">
+    <!-- Import modal confirm delete online store -->
+    <div th:replace="food/modal/modal-confirm-delete-online-store :: confirmDeleteOnlineStoreModal"></div>
+  </th:block>
   <th:block th:if="${page == 7}">
     <div th:replace="traffic/modal/modal-show-bus-stop :: showBusStopModal"></div>
   </th:block>
@@ -113,6 +125,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
+
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script th:src="@{/js/bootstrap/popper.min.js}"></script>
@@ -124,6 +137,7 @@
   <script th:src="@{/js/datatables/jquery.dataTables.min.js}"></script>
   <script th:src="@{/js/datatables/datatables.vietnamese.js}"></script>
   <script th:src="@{/js/template/index.js}"></script>
+  <script th:src="@{/js/templates/all.js}"></script>
 
   <script th:if="${busStop != null && busStop.size() != 0}">
       const myModal = new bootstrap.Modal(document.getElementById('showBusStopModal'));

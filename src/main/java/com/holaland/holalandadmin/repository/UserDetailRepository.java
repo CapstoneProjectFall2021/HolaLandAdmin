@@ -11,7 +11,7 @@ public interface UserDetailRepository {
 
     List<UserDetail> getAllUserAppliedByUserId(int id) throws DataAccessException;
 
-    List<UserDetail> getAllUserInfo() throws DataAccessException;
+    List<UserDetail> getAllUserInfo(Integer... status) throws DataAccessException;
 
     UserDetail getOneByUserId(int id) throws DataAccessException;
 

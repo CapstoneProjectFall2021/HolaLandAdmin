@@ -7,5 +7,5 @@ public interface UserRepository {
 
     User findByEmail(String email);
 
-    boolean updatePassword(String newPassword, int userId) throws DataAccessException;
+    boolean delete(int id) throws DataAccessException;
 }
