@@ -17,11 +17,11 @@ var vietnamese = {
 };
 
 $(document).ready(function() {
-  var dtable = $('#user-table, #food-table, #club-table').dataTable({
+  var dtable = $('#user-table, #food-table, #club-table, #recruitment-table, #find-job-table').dataTable({
     "oLanguage": vietnamese
   });
 });
 
 $(document).ready(function() {
-  $('#user-table, #club-table').DataTable();
+  $('#user-table, #club-table, #recruitment-table, #find-job-table').DataTable();
 });

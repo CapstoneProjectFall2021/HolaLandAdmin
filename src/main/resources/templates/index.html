@@ -14,6 +14,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" th:href="@{/css/hola-land/common.css}"/>
   <link rel="stylesheet" th:href="@{/css/hola-land/dashboard.css}"/>
+  <link rel="stylesheet" th:href="@{/css/hola-land/work.css}"/>
 
   <title>Dashboard</title>
 </head>
@@ -37,9 +38,19 @@
         <th:block th:if="${page == 3}">
           <div th:replace="fptu/club :: club"></div>
         </th:block>
+        <th:block th:if="${page == 4}">
+          <div th:replace="work/recruitment :: recruitment"></div>
+        </th:block>
+        <th:block th:if="${page == 5}">
+          <div th:replace="work/find-job :: find-job"></div>
+        </th:block>
       </div>
     </div>
   </div>
+
+  <th:block>
+    <div th:replace="common/modal/modal-show-content :: showContentModal"></div>
+  </th:block>
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -101,6 +112,7 @@
   <script th:src="@{/js/datatables/jquery.min.js}"></script>
   <script th:src="@{/js/datatables/jquery.dataTables.min.js}"></script>
   <script th:src="@{/js/datatables/datatables.vietnamese.js}"></script>
+  <script th:src="@{/js/template/index.js}"></script>
 
   <script>
     $(document).ready(function() {

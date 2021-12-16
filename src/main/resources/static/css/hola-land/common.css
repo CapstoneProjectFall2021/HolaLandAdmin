@@ -425,3 +425,22 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .toast-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.modal-content .content {
+  margin-top: 4px;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-content .content .pre {
+  white-space: pre-wrap;
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+}
+
+.modal-description {
+  max-width: 1000px;
+}
