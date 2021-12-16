@@ -94,6 +94,10 @@
   float: right;
 }
 
+#find-job-table_filter {
+  float: right;
+}
+
 .datatable label {
   display: inline-block;
   max-width: 100%;

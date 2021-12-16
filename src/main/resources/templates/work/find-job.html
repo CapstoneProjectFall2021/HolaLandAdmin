@@ -30,65 +30,56 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "work, stt : ${workList}">
+        <tr th:each = "worker, stt : ${workerList}">
           <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
           <td>
-            <th:block th:with="user=${userDetailService.getOneByUserId(work.userId)}">
+            <th:block th:with="user=${userDetailService.getOneByUserId(worker.userId)}">
               <span th:text="${user.userDetailEmail}"></span>
             </th:block>
           </td>
-          <td><span th:text="*{work.workRequestRecruitmentTitle}"></span></td>
+          <td><span th:text="*{worker.workRequestFindJobTitle}"></span></td>
           <td>
             <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
-              <span class="d-none" th:text="*{work.workRequestRecruitmentDescription}"></span>
+              <span class="d-none" th:text="*{worker.workRequestFindJobDescription}"></span>
               Chi tiết
             </a>
           </td>
           <td>
-            <th:block th:with="type=${workRequestTypeService.getOne(work.workRequestTypeId)}">
+            <th:block th:with="type=${workRequestTypeService.getOne(worker.workRequestTypeId)}">
               <span th:text="*{type.workRequestTypeName}"></span>
             </th:block>
           </td>
           <td>
             <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
-              <span class="d-none" th:text="*{work.workRequestRecruitmentRequirement}"></span>
+              <span class="d-none" th:text="*{worker.workRequestFindJobPersonalExperience}"></span>
               Chi tiết
             </a>
           </td>
+          <td><span th:text="*{worker.workRequestFindJobExpectedSalary}"></span></td>
           <td>
-            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
-              <span class="d-none" th:text="*{work.workRequestRecruitmentBenefit}"></span>
-              Chi tiết
-            </a>
-          </td>
-          <td><span th:text="*{work.workRequestRecruitmentSalary}"></span></td>
-          <td>
-            <th:block th:with="unit=${workSalaryUnitService.getOne(work.workSalaryUnitId)}">
+            <th:block th:with="unit=${workSalaryUnitService.getOne(worker.workSalaryUnitId)}">
               <span th:text="${unit.workSalaryUnitName}"></span>
             </th:block>
           </td>
           <td>
-            <th:block th:with="payment=${workPaymentMethodService.getOne(work.workPaymentMethodId)}">
+            <th:block th:with="payment=${workPaymentMethodService.getOne(worker.workPaymentMethodId)}">
               <span th:text="${payment.workPaymentMethodName}"></span>
             </th:block>
           </td>
-          <td><span th:text="*{work.workRequestRecruitmentQuantity}"></span></td>
-          <td><span th:text="*{work.workRequestRecruitmentExperienceRequirement ? 'Có' : 'Không'}"></span></td>
-          <td><span th:text="*{work.workRequestRecruitmentGenderRequirement ? 'Có' : 'Không'}"></span></td>
-          <td><span th:text="*{work.workRequestRecruitmentWorkLocation}"></span></td>
-          <td><span th:text="*{work.workRequestRecruitmentStartDateTime}"></span></td>
-          <td><span th:text="*{work.workRequestRecruitmentEndDateTime}"></span></td>
+          <td><span th:text="*{worker.workRequestFindJobExpectedLocation}"></span></td>
+          <td><span th:text="*{worker.workRequestFindJobStartDateTime}"></span></td>
+          <td><span th:text="*{worker.workRequestFindJobEndDateTime}"></span></td>
           <td>
-            <th:block th:with="sttWork=${sttWorkService.getOneByCode(work.sttWorkCode)}">
+            <th:block th:with="sttWork=${sttWorkService.getOneByCode(worker.sttWorkCode)}">
               <span th:text="${sttWork.sttWorkValue}"></span>
             </th:block>
           </td>
           <td class="text-right">
-            <th:block th:if="*{work.workRequestRecruitmentNote != null}">
+            <th:block th:if="*{worker.workRequestFindJobNote != null}">
               <a href="javascript:void(0)" class="text-info">
                 <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"
-                   onclick="showRecruitmentReasonReject(event)">
-                  <span class="d-none" th:text="*{work.workRequestRecruitmentNote}"></span>
+                   onclick="showContent(event)">
+                  <span class="d-none" th:text="*{worker.workRequestFindJobNote}"></span>
                 </i>
               </a>
             </th:block>
