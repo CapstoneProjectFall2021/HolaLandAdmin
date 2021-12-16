@@ -67,12 +67,18 @@
             </th:block>
           </td>
           <td><span th:text="*{worker.workRequestFindJobExpectedLocation}"></span></td>
-          <td><span th:text="*{worker.workRequestFindJobStartDateTime}"></span></td>
-          <td><span th:text="*{worker.workRequestFindJobEndDateTime}"></span></td>
+          <td><span th:text="*{#dates.format(worker.workRequestFindJobStartDateTime, 'dd-MM-yyyy')}"></span></td>
+          <td><span th:text="*{#dates.format(worker.workRequestFindJobEndDateTime, 'dd-MM-yyyy')}"></span></td>
           <td>
-            <th:block th:with="sttWork=${sttWorkService.getOneByCode(worker.sttWorkCode)}">
-              <span th:text="${sttWork.sttWorkValue}"></span>
-            </th:block>
+            <span th:classappend="*{worker.sttWorkCode == 1 ? 'text-info'
+            : (worker.sttWorkCode == 2 ? 'text-secondary'
+            : (worker.sttWorkCode == 3 ? 'text-warning'
+            : (worker.sttWorkCode == 4 ? 'color-success' : 'text-danger')))}"
+                th:text="*{worker.sttWorkCode == 1 ? 'Đang chờ duyệt'
+            : (worker.sttWorkCode == 2 ? 'Từ chối duyệt'
+            : (worker.sttWorkCode == 3 ? 'Đã duyệt'
+            : (worker.sttWorkCode == 4 ? 'Hoàn thành' : 'Hết hạn')))}">
+            </span>
           </td>
           <td class="text-right">
             <th:block th:if="*{worker.workRequestFindJobNote != null}">

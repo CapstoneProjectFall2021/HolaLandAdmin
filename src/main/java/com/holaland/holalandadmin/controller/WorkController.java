@@ -44,7 +44,6 @@ public class WorkController {
     public String recruitment(Model model) {
         List<WorkRequestRecruitment> workList = workRequestRecruitmentService.getAll();
         model.addAttribute("workList", workList);
-        model.addAttribute("sttWorkService",sttWorkService);
         model.addAttribute("workPaymentMethodService",workPaymentMethodService);
         model.addAttribute("workRequestTypeService",workRequestTypeService);
         model.addAttribute("workSalaryUnitService",workSalaryUnitService);
@@ -64,7 +63,6 @@ public class WorkController {
     public String findJob(Model model) {
         List<WorkRequestFindJob> workerList = workRequestFindJobService.getAll();
         model.addAttribute("workerList", workerList);
-        model.addAttribute("sttWorkService",sttWorkService);
         model.addAttribute("workPaymentMethodService",workPaymentMethodService);
         model.addAttribute("workRequestTypeService",workRequestTypeService);
         model.addAttribute("workSalaryUnitService",workSalaryUnitService);

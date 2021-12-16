@@ -448,3 +448,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .color-danger {
   color: #B02F3B !important;
 }
+
+.color-success {
+  color: #198754 !important;
+}
