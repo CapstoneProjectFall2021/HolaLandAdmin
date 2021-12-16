@@ -44,6 +44,12 @@
         <th:block th:if="${page == 5}">
           <div th:replace="work/find-job :: find-job"></div>
         </th:block>
+        <th:block th:if="${page == 7}">
+          <div th:replace="traffic/bus :: bus"></div>
+        </th:block>
+        <th:block th:if="${page == 8}">
+          <div th:replace="traffic/motorbike-taxi-drivers :: motorbike-taxi-drivers"></div>
+        </th:block>
       </div>
     </div>
   </div>
@@ -51,6 +57,10 @@
   <th:block>
     <div th:replace="common/modal/modal-show-content :: showContentModal"></div>
     <div th:replace="common/modal/modal-confirm-delete :: confirmDeleteModal"></div>
+  </th:block>
+
+  <th:block th:if="${page == 7}">
+    <div th:replace="traffic/modal/modal-show-bus-stop :: showBusStopModal"></div>
   </th:block>
 
   <!-- Scroll to Top Button-->
@@ -114,6 +124,11 @@
   <script th:src="@{/js/datatables/jquery.dataTables.min.js}"></script>
   <script th:src="@{/js/datatables/datatables.vietnamese.js}"></script>
   <script th:src="@{/js/template/index.js}"></script>
+
+  <script th:if="${busStop != null && busStop.size() != 0}">
+      const myModal = new bootstrap.Modal(document.getElementById('showBusStopModal'));
+      myModal.show();
+  </script>
 
   <script>
     $(document).ready(function() {

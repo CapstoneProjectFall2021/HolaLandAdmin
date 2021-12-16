@@ -452,3 +452,15 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .color-success {
   color: #198754 !important;
 }
+
+.timeline {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 40px;
+  list-style: none;
+}

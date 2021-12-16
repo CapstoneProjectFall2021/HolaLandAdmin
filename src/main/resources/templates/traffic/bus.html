@@ -1,0 +1,57 @@
+<div th:fragment="bus">
+  <!-- Page Heading -->
+  <div class="row title">
+    <div class="col-md-12">
+      <h3>
+        Quản lý tuyển người làm
+      </h3>
+    </div>
+  </div>
+
+  <div class="row datatable mt-3">
+    <div class="col-lg-12">
+      <table id="bus-table" class="table" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th>Xe số<i class="fas fa-sort fa-size"></i></th>
+          <th>Thời gian bắt đầu<i class="fas fa-sort fa-size"></i></th>
+          <th>Thời gian kết thúc<i class="fas fa-sort fa-size"></i></th>
+          <th>Thông tin<i class="fas fa-sort fa-size"></i></th>
+          <th>Giá<i class="fas fa-sort fa-size"></i></th>
+          <th>Điểm dừng<i class="fas fa-sort fa-size"></i></th>
+          <th>Trạng thái<i class="fas fa-sort fa-size"></i></th>
+          <th>Thêm<i class="fas fa-sort fa-size"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "bus, stt : ${busList}">
+          <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
+          <td><span th:text="*{bus.tfBusName}"></span></td>
+          <td><span th:text="*{bus.tfBusStartTime}"></span></td>
+          <td><span th:text="*{bus.tfBusEndTime}"></span></td>
+          <td><span th:text="*{bus.tfBusInfo}"></span></td>
+          <td><span th:text="*{bus.tfBusPrice}"></span></td>
+          <td>
+            <a th:href="@{/bus/stop(busId=*{bus.tfBusId})}" class="text-info">
+              Chi tiết
+            </a>
+          </td>
+          <td>
+            <span th:classappend="*{bus.tfBusStatus == 1 ? 'color-success' : 'text-danger'}"
+                th:text="*{bus.tfBusStatus == 1 ? 'Đang hoạt động' : 'Đã dừng'}">
+            </span>
+          </td>
+          <td class="text-right">
+            <a href="javascript:void(0)" class="color-danger">
+              <i class="far fa-trash-alt" onclick="confirmDeleteBus(event)">
+                <span class="d-none" th:text="*{bus.tfBusId}"></span>
+              </i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

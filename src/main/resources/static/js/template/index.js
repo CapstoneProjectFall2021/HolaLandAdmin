@@ -42,3 +42,19 @@ function confirmDeleteFindJob(e) {
     document.getElementById("btn-delete").href = "/work/find-job/delete?findJobId="+findJobId;
     openModal("confirmDeleteModal");
 }
+
+/*
+ * Traffic
+ */
+
+function confirmDeleteBus(e) {
+    const busId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-delete").href = "/bus/delete?busId="+busId;
+    openModal("confirmDeleteModal");
+}
+
+function confirmDeleteMotorbikeTaxi(e) {
+    const motorbikeId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-delete").href = "/motorbike-taxi-drivers/delete?motorbikeId="+motorbikeId;
+    openModal("confirmDeleteModal");
+}
