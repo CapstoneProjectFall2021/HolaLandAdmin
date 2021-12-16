@@ -24,4 +24,9 @@ public class WorkRequestRecruitmentServiceImpl implements WorkRequestRecruitment
     public List<WorkRequestRecruitment> getAll() throws DataAccessException {
         return workRequestRecruitmentRepository.getAll();
     }
+
+    @Override
+    public boolean delete(int id) throws DataAccessException {
+        return workRequestRecruitmentRepository.delete(id);
+    }
 }

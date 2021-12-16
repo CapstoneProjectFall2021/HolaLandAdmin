@@ -25,4 +25,12 @@ public class WorkRequestRecruitmentRepositoryImpl implements WorkRequestRecruitm
     public List<WorkRequestRecruitment> getAll() throws DataAccessException {
         return jdbcTemplate.query(WORK_REQUEST_RECRUITMENT_GET_ALL, new WorkRequestRecruitmentMapper());
     }
+
+    @Override
+    public boolean delete(int id) throws DataAccessException {
+        return jdbcTemplate.update(
+                WORK_REQUEST_RECRUITMENT_DELETED_ONE,
+                id
+        ) > 0;
+    }
 }

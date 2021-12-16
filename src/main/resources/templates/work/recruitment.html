@@ -97,7 +97,8 @@
               </a>
             </th:block>
             <a href="javascript:void(0)" class="color-danger">
-              <i class="far fa-trash-alt">
+              <i class="far fa-trash-alt" onclick="confirmDeleteRecruitment(event)">
+                <span class="d-none" th:text="*{work.workRequestRecruitmentId}"></span>
               </i>
             </a>
           </td>

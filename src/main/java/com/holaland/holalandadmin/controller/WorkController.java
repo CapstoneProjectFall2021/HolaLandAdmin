@@ -7,6 +7,7 @@ import com.holaland.holalandadmin.service.work.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -53,6 +54,12 @@ public class WorkController {
         return "index";
     }
 
+    @GetMapping("/work/recruitment/delete")
+    public String deleteRecruitment(@RequestParam("recruitmentId") int recruitmentId) {
+        boolean isCheck = workRequestRecruitmentService.delete(recruitmentId);
+        return "redirect:" + "/work/recruitment";
+    }
+
     @GetMapping("/work/find-job")
     public String findJob(Model model) {
         List<WorkRequestFindJob> workerList = workRequestFindJobService.getAll();
@@ -65,5 +72,11 @@ public class WorkController {
         model.addAttribute("userDetailService",userDetailService);
         model.addAttribute("page", 5);
         return "index";
+    }
+
+    @GetMapping("/work/find-job/delete")
+    public String deleteFindJob(@RequestParam("findJobId") int findJobId) {
+        boolean isCheck = workRequestFindJobService.delete(findJobId);
+        return "redirect:" + "/work/find-job";
     }
 }

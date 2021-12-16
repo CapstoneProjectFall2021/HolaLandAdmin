@@ -26,3 +26,19 @@ function confirmDeleteClub(e) {
     document.getElementById("btn-delete").href = "/club/delete?clubId="+clubId;
     openModal("confirmDeleteModal");
 }
+
+/*
+ * Work
+ */
+
+function confirmDeleteRecruitment(e) {
+    const recruitmentId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-delete").href = "/work/recruitment/delete?recruitmentId="+recruitmentId;
+    openModal("confirmDeleteModal");
+}
+
+function confirmDeleteFindJob(e) {
+    const findJobId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-delete").href = "/work/find-job/delete?findJobId="+findJobId;
+    openModal("confirmDeleteModal");
+}

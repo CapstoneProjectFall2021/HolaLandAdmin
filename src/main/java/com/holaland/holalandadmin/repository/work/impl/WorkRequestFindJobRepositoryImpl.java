@@ -25,4 +25,9 @@ public class WorkRequestFindJobRepositoryImpl implements WorkRequestFindJobRepos
     public List<WorkRequestFindJob> getAll() throws DataAccessException {
         return jdbcTemplate.query(WORK_REQUEST_FIND_JOB_GET_ALL, new WorkRequestFindJobMapper());
     }
+
+    @Override
+    public boolean delete(int id) throws DataAccessException {
+        return jdbcTemplate.update(WORK_REQUEST_FIND_JOB_DELETED_ONE, id) > 0;
+    }
 }

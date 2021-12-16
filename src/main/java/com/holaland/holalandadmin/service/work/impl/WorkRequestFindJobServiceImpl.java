@@ -23,4 +23,9 @@ public class WorkRequestFindJobServiceImpl implements WorkRequestFindJobService 
     public List<WorkRequestFindJob> getAll() throws DataAccessException {
         return workRequestFindJobRepository.getAll();
     }
+
+    @Override
+    public boolean delete(int id) throws DataAccessException {
+        return workRequestFindJobRepository.delete(id);
+    }
 }

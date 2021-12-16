@@ -8,4 +8,6 @@ import java.util.List;
 public interface WorkRequestFindJobRepository {
 
     List<WorkRequestFindJob> getAll() throws DataAccessException;
+
+    boolean delete(int id) throws DataAccessException;
 }

@@ -8,8 +8,14 @@ public interface IRepositoryQuery {
             "AND work_payment_method_deleted = 0";
 
     String WORK_REQUEST_FIND_JOB_GET_ALL = "SELECT * FROM work_request_find_job WHERE work_request_find_job_deleted = 0";
+    String WORK_REQUEST_FIND_JOB_DELETED_ONE = "UPDATE work_request_find_job\n" +
+            "SET work_request_find_job_deleted = 1\n" +
+            "WHERE work_request_find_job_id = ?";
 
     String WORK_REQUEST_RECRUITMENT_GET_ALL = "SELECT * FROM work_request_recruitment WHERE work_request_recruitment_deleted = 0";
+    String WORK_REQUEST_RECRUITMENT_DELETED_ONE = "UPDATE work_request_recruitment\n" +
+            "SET work_request_recruitment_deleted = 1\n" +
+            "WHERE work_request_recruitment_id = ?";
 
     String WORK_REQUEST_TYPE_GET_ONE = "SELECT * FROM work_request_type WHERE work_request_type_id = ? AND work_request_type_deleted = 0";
 
