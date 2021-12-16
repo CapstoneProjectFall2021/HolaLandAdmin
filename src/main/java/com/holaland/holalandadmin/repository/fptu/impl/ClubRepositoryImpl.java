@@ -25,4 +25,12 @@ public class ClubRepositoryImpl implements ClubRepository, IRepositoryQuery {
     public List<Club> getAll() throws DataAccessException {
         return jdbcTemplate.query(FPTU_CLUB_GET_ALL, new ClubMapper());
     }
+
+    @Override
+    public boolean delete(int id) throws DataAccessException {
+        return jdbcTemplate.update(
+                FPTU_CLUB_DELETE_ONE,
+                id
+        ) > 0;
+    }
 }

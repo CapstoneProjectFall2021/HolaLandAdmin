@@ -14,5 +14,15 @@ function showToast(id) {
 function showContent(e) {
     const content = e.target.firstElementChild.innerHTML;
     document.getElementById("content").innerHTML = content;
-    openModal("showContentModal")
+    openModal("showContentModal");
+}
+
+/*
+ * Club
+ */
+
+function confirmDeleteClub(e) {
+    const clubId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-delete").href = "/club/delete?clubId="+clubId;
+    openModal("confirmDeleteModal");
 }

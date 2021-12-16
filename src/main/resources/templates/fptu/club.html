@@ -57,8 +57,10 @@
             </a>
           </td>
           <td class="text-right">
-            <a href="javascript:void(0)" class="text-info" data-bs-toggle="modal" data-bs-target="#reasonRejectionOrderModal">
-              <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"></i>
+            <a href="javascript:void(0)" class="color-danger">
+              <i class="far fa-trash-alt" onclick="confirmDeleteClub(event)">
+                <span class="d-none" th:text="*{club.fptuClubId}"></span>
+              </i>
             </a>
           </td>
         </tr>

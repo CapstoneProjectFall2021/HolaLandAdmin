@@ -444,3 +444,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .modal-description {
   max-width: 1000px;
 }
+
+.color-danger {
+  color: #B02F3B !important;
+}
