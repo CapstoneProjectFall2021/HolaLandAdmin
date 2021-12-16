@@ -14,27 +14,31 @@
         <thead>
         <tr>
           <th class="text-center">#</th>
+          <th>Email<i class="fas fa-sort fa-size"></i></th>
           <th>Tên<i class="fas fa-sort fa-size"></i></th>
           <th class="text-center">Ngày sinh<i class="fas fa-sort fa-size"></i></th>
           <th class="text-right">Giới tính<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-right">SĐT<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-right">Email<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">SĐT<i class="fas fa-sort fa-size"></i></th>
           <th class="text-right">Thêm<i class="fas fa-sort fa-size"></i></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "info : ${getAllUserInfo}">
-          <td class="text-center">1</td>
-          <td><a href=""><span th:text = "*{info.userDetailName}"></span></a></td>
+        <tr th:each = "info,stt : ${getAllUserInfo}">
+          <td class="text-center" th:text="*{stt.index + 1}"></td>
+          <td><a href=""><span th:text = "*{info.userDetailEmail}"></span></a></td>
+          <td><span th:text = "*{info.userDetailName}"></span></td>
           <td class="text-center">
             <i class="bi bi-calendar3-week me-1"></i><span th:text = "*{#dates.format(info.userDetailDob, 'dd-MM-yyyy')}"></span>
           </td>
-          <td class="text-right"><span th:text = "*{info.userDetailGender}"></span></td>
+          <td class="text-center"><span th:text = "*{info.userDetailGender}==1?'Nam':'Nữ'"></span></td>
           <td class="text-secondary text-right"><span th:text = "*{info.userDetailPhone}"></span></td>
-          <td class="text-right"><span th:text = "*{info.userDetailEmail}"></span></td>
           <td class="text-right">
-            <a href="javascript:void(0)" class="text-info" data-bs-toggle="modal" data-bs-target="#reasonRejectionOrderModal">
-              <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"></i>
+            <a href="javascript:void(0)" class="text-danger">
+              <i class="far fa-trash-alt" data-bs-placement="top" data-bs-toggle="tooltip"
+                 title="Xoá tài khoản" onclick="confirmDeleteUser(event)">
+                <span class="d-none" th:text="${info.userId}"></span>
+                <span class="d-none" th:text="${status}"></span>
+              </i>
             </a>
           </td>
         </tr>

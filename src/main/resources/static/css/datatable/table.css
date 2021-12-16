@@ -86,6 +86,10 @@
   float: right;
 }
 
+#online-store-table_filter {
+  float: right;
+}
+
 .datatable label {
   display: inline-block;
   max-width: 100%;

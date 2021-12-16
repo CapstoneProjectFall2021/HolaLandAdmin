@@ -26,11 +26,7 @@ public class UserRepositoryImpl implements UserRepository, IRepositoryQuery {
     }
 
     @Override
-    public boolean updatePassword(String newPassword, int userId) throws DataAccessException {
-        return jdbcTemplate.update(
-                UPDATE_USER_PASSWORD,
-                newPassword,
-                userId
-        ) > 0;
+    public boolean delete(int id) throws DataAccessException {
+        return jdbcTemplate.update(USER_DELETE_ONE, id) > 0;
     }
 }

@@ -32,8 +32,20 @@ public class UserDetailRepositoryImpl implements UserDetailRepository, IReposito
     }
 
     @Override
-    public List<UserDetail> getAllUserInfo() throws DataAccessException {
-        return jdbcTemplate.query(GET_ALL_USER_BY_USER_ROLE, new UserDetailMapper());
+    public List<UserDetail> getAllUserInfo(Integer... status) throws DataAccessException {
+        StringBuilder s = new StringBuilder("(");
+        for (int i = 0; i < status.length; i++) {
+            s.append((i != status.length - 1) ? status[i] + "," : status[i] + ")");
+        }
+        String sql ="SELECT DISTINCT T1.user_detail_id, T1.user_id, T1.user_name, T1.user_dob, T1.user_gender, T1.user_phone, T1.user_email\n" +
+                "FROM user_detail T1\n" +
+                "LEFT JOIN user_role T2\n" +
+                "ON T1.user_id = T2.user_id\n" +
+                "LEFT JOIN user T3\n" +
+                "ON T1.user_id = T3.user_id\n" +
+                "WHERE role_id in "+ s +"\n" +
+                "  AND T3.user_deleted = 0;";
+        return jdbcTemplate.query(sql, new UserDetailMapper());
     }
 
     @Override

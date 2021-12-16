@@ -18,10 +18,18 @@
       <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
     </a>
     <div class="dropdown-menu" aria-labelledby="userDropdown">
-      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Tất cả</a>
-      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Người dùng</a>
-      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Người tuyển dụng</a>
-      <a class="dropdown-item" th:href="@{/user/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Người bán hàng</a>
+      <a class="dropdown-item" th:href="@{/user/all(status=0)}" th:classappend="${status == 0 ? 'active' : ''}">
+        <i class="fas fa-user-friends fa-fw mr-2"></i>Tất cả
+      </a>
+      <a class="dropdown-item" th:href="@{/user/all(status=1)}" th:classappend="${status == 1 ? 'active' : ''}">
+        <i class="fas fa-user-friends fa-fw mr-2"></i>Người dùng
+      </a>
+      <a class="dropdown-item" th:href="@{/user/all(status=2)}" th:classappend="${status == 2 ? 'active' : ''}">
+        <i class="fas fa-user-friends fa-fw mr-2"></i>Người tuyển dụng
+      </a>
+      <a class="dropdown-item" th:href="@{/user/all(status=3)}" th:classappend="${status == 3 ? 'active' : ''}">
+        <i class="fas fa-user-friends fa-fw mr-2"></i>Người bán hàng
+      </a>
     </div>
   </li>
   <li class="nav-item dropdown">
@@ -52,7 +60,9 @@
       <i class="fas fa-angle-right float-right mt-1 font-arrow toggle-hide"></i>
     </a>
     <div class="dropdown-menu" aria-labelledby="foodDropdown">
-      <a class="dropdown-item" href=""><i class="fas fa-store fa-fw mr-2"></i>Cửa hàng online</a>
+      <a class="dropdown-item" th:href="@{/food/online-store}">
+        <i class="fas fa-store fa-fw mr-2"></i>Cửa hàng online
+      </a>
     </div>
   </li>
   <li class="nav-item dropdown">

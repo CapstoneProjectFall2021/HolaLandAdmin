@@ -5,7 +5,9 @@ import com.holaland.holalandadmin.entity.Role;
 import com.holaland.holalandadmin.entity.User;
 import com.holaland.holalandadmin.repository.RoleRepository;
 import com.holaland.holalandadmin.repository.UserRepository;
+import com.holaland.holalandadmin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class UserServiceImpl implements UserDetailsService, UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -62,5 +64,10 @@ public class UserServiceImpl implements UserDetailsService {
                 user.getUserStatusId(),
                 user.isUserDeleted()
         );
+    }
+
+    @Override
+    public boolean delete(int id) throws DataAccessException {
+        return userRepository.delete(id);
     }
 }

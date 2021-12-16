@@ -34,9 +34,22 @@
         <th:block th:if="${page == 2}">
           <div th:replace="user/all :: all"></div>
         </th:block>
+        <th:block th:if="${page == 6}">
+          <div th:replace="food/online-store :: online-store"></div>
+        </th:block>
       </div>
     </div>
   </div>
+
+  <!-- Modal  -->
+  <th:block th:if="${page == 2}">
+    <!-- Import modal confirm delete user -->
+    <div th:replace="user/modal/modal-confirm-delete-user :: confirmDeleteUserModal"></div>
+  </th:block>
+  <th:block th:if="${page == 6}">
+    <!-- Import modal confirm delete online store -->
+    <div th:replace="food/modal/modal-confirm-delete-online-store :: confirmDeleteOnlineStoreModal"></div>
+  </th:block>
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -88,6 +101,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
+  <script th:src="@{/js/templates/all.js}"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script th:src="@{/js/bootstrap/popper.min.js}"></script>
