@@ -65,6 +65,12 @@ public class WorkController {
         return "index";
     }
 
+    @GetMapping("/work/recruitment/approve")
+    public String approveRequestRecruitment(@RequestParam("recruitmentId") int recruitmentId) {
+        boolean isCheck = workRequestRecruitmentService.requestRecruitmentApprove(recruitmentId);
+        return "redirect:" + "/work/recruitment";
+    }
+
     @GetMapping("/work/recruitment/delete")
     public String deleteRecruitment(@RequestParam("recruitmentId") int recruitmentId) {
         boolean isCheck = workRequestRecruitmentService.delete(recruitmentId);
@@ -94,6 +100,12 @@ public class WorkController {
         model.addAttribute("format", new Format());
         model.addAttribute("page", 5);
         return "index";
+    }
+
+    @GetMapping("/work/find-job/approve")
+    public String approveRequestFindJob(@RequestParam("findJobId") int findJobId) {
+        boolean isCheck = workRequestFindJobService.requestFindJobApprove(findJobId);
+        return "redirect:" + "/work/find-job";
     }
 
     @GetMapping("/work/find-job/delete")

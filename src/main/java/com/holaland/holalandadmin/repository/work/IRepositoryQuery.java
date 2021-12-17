@@ -11,6 +11,9 @@ public interface IRepositoryQuery {
             "AND work_request_find_job_deleted = 0";
     String WORK_REQUEST_FIND_JOB_GET_ONE = "SELECT * FROM work_request_find_job WHERE work_request_find_job_id = ? " +
             "AND work_request_find_job_deleted = 0";
+    String WORK_REQUEST_FIND_JOB_APPROVE = "UPDATE work_request_find_job\n" +
+            "SET stt_work_code = 3\n" +
+            "WHERE work_request_find_job_id = ?";
     String WORK_REQUEST_FIND_JOB_DELETED_ONE = "UPDATE work_request_find_job\n" +
             "SET work_request_find_job_deleted = 1\n" +
             "WHERE work_request_find_job_id = ?";
@@ -19,6 +22,9 @@ public interface IRepositoryQuery {
             "AND work_request_recruitment_deleted = 0";
     String WORK_REQUEST_RECRUITMENT_GET_ONE = "SELECT * FROM work_request_recruitment WHERE work_request_recruitment_id = ? " +
             "AND work_request_recruitment_deleted = 0";
+    String WORK_REQUEST_RECRUITMENT_APPROVE = "UPDATE work_request_recruitment\n" +
+            "SET stt_work_code = 3\n" +
+            "WHERE work_request_recruitment_id = ?";
     String WORK_REQUEST_RECRUITMENT_DELETED_ONE = "UPDATE work_request_recruitment\n" +
             "SET work_request_recruitment_deleted = 1\n" +
             "WHERE work_request_recruitment_id = ?";

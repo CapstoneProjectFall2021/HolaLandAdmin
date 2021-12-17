@@ -11,5 +11,7 @@ public interface WorkRequestRecruitmentRepository {
 
     WorkRequestRecruitment getOne(int id) throws DataAccessException;
 
+    boolean requestRecruitmentApprove(int id) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
 }

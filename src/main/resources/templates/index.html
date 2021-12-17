@@ -77,6 +77,9 @@
   <th:block th:if="${page == 5 && workFindJob != null}">
     <div th:replace="work/modal/modal-show-detail-find-job :: showDetailFindJobModal"></div>
   </th:block>
+  <th:block th:if="${page == 4 || page == 5}">
+    <div th:replace="work/modal/modal-confirm-approve :: confirmApproveModal"></div>
+  </th:block>
   <th:block th:if="${page == 6}">
     <!-- Import modal confirm delete online store -->
     <div th:replace="food/modal/modal-confirm-delete-online-store :: confirmDeleteOnlineStoreModal"></div>

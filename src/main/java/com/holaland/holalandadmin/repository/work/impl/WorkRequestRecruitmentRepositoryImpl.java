@@ -32,6 +32,14 @@ public class WorkRequestRecruitmentRepositoryImpl implements WorkRequestRecruitm
     }
 
     @Override
+    public boolean requestRecruitmentApprove(int id) throws DataAccessException {
+        return jdbcTemplate.update(
+                WORK_REQUEST_RECRUITMENT_APPROVE,
+                id
+        ) > 0;
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return jdbcTemplate.update(
                 WORK_REQUEST_RECRUITMENT_DELETED_ONE,

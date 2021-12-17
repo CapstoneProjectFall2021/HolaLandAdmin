@@ -50,6 +50,13 @@
             <a th:href="@{/work/find-job/detail(findJobId=*{worker.workRequestFindJobId})}">
               <i class="fas fa-eye text-warning"></i>
             </a>
+            <th:block th:if="*{worker.sttWorkCode == 1}">
+              <a href="javascript:void(0)" class="text-success">
+                <i class="fas fa-check" onclick="confirmApproveFindJob(event)">
+                  <span class="d-none" th:text="*{worker.workRequestFindJobId}"></span>
+                </i>
+              </a>
+            </th:block>
             <a href="javascript:void(0)" class="color-danger">
               <i class="far fa-trash-alt" onclick="confirmDeleteFindJob(event)">
                 <span class="d-none" th:text="*{worker.workRequestFindJobId}"></span>

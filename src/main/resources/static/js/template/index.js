@@ -43,6 +43,18 @@ function confirmDeleteFindJob(e) {
     openModal("confirmDeleteModal");
 }
 
+function confirmApproveRecruitment(e) {
+    const recruitmentId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-approve").href = "/work/recruitment/approve?recruitmentId="+recruitmentId;
+    openModal("confirmApproveModal");
+}
+
+function confirmApproveFindJob(e) {
+    const findJobId = e.target.firstElementChild.innerHTML;
+    document.getElementById("btn-approve").href = "/work/find-job/approve?findJobId="+findJobId;
+    openModal("confirmApproveModal");
+}
+
 /*
  * Traffic
  */
