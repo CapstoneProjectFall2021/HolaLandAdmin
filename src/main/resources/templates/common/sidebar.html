@@ -2,7 +2,7 @@
 <ul class="sidebar navbar-nav sidebar-fixed" th:fragment="sidebar">
   <li class="nav-item">
     <a class="nav-link" href="">
-      <h3>FMS</h3>
+      <h3>Hola Land</h3>
     </a>
   </li>
   <li class="nav-item" th:classappend="${page == 1 ? 'active' : ''}">
@@ -32,7 +32,7 @@
       </a>
     </div>
   </li>
-  <li class="nav-item dropdown">
+  <li class="nav-item dropdown" th:classappend="${page == 3 ? 'active' : ''}">
     <a class="nav-link dropdown-toggle" href="#" id="fptuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-university fa-fw"></i>
       <span>FPT University</span>
@@ -42,7 +42,7 @@
       <a class="dropdown-item" th:href="@{/club/all}"><i class="fas fa-user-friends fa-fw mr-2"></i>Câu lạc bộ</a>
     </div>
   </li>
-  <li class="nav-item dropdown">
+  <li class="nav-item dropdown" th:classappend="${(page == 4 || page == 5) ? 'active' : ''}">
     <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-user-check fa-fw"></i>
       <span>Việc làm</span>
@@ -65,7 +65,7 @@
       </a>
     </div>
   </li>
-  <li class="nav-item dropdown">
+  <li class="nav-item dropdown" th:classappend="${(page == 7 || page == 8) ? 'active' : ''}">
     <a class="nav-link dropdown-toggle" href="#" id="trafficDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-bus-alt fa-fw"></i>
       <span>Giao thông</span>
