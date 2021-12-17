@@ -81,11 +81,31 @@ public interface IRepositoryQuery {
             "SET user_deleted = 1\n" +
             "WHERE user_id = ?";
 
-    String FOOD_STORE_ONLINE_GET_ALL = "SELECT * FROM food_store_online WHERE food_store_online_deleted = 0";
+    String USER_GET_ONE = "SELECT * FROM user WHERE user_id = ? AND user_deleted = 0";
+
+    String USER_UNLOCK = "UPDATE user\n" +
+            "SET user_status_id = 1\n" +
+            "WHERE user_id = ?;";
+
+    String USER_LOCK = "UPDATE user\n" +
+            "SET user_status_id = 2\n" +
+            "WHERE user_id = ?;";
+
+    String USER_GET_ROLE = "SELECT * FROM user_role WHERE user_id = ? LIMIT 1";
+
+    String FOOD_STORE_ONLINE_GET_ALL = "SELECT * FROM food_store_online";
     String FOOD_STORE_ONLINE_GET_ONE = "SELECT * FROM food_store_online WHERE food_store_online_id = ?";
 
-    String FOOD_STORE_ONLINE_DELETE_ONE = "UPDATE food_store_online\n" +
+    String FOOD_STORE_ONLINE_LOCK_ONE = "UPDATE food_store_online\n" +
             "SET food_store_online_deleted = 1\n" +
             "WHERE food_store_online_id = ?";
+
+    String FOOD_STORE_ONLINE_UNLOCK_ONE = "UPDATE food_store_online\n" +
+            "SET food_store_online_deleted = 0\n" +
+            "WHERE food_store_online_id = ?";
+
+    String FOOD_STORE_ONLINE_RATE_GET_ALL_BY_STORE_ONLINE_ID = "SELECT * FROM food_store_online_rate WHERE food_store_online_id = ?";
+
+    String FOOD_REPORT_GET_ALL_BY_STORE_ONLINE_ID = "SELECT * FROM food_report WHERE food_store_online_id = ?";
 
 }

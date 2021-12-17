@@ -1,0 +1,39 @@
+<!-- Modal show report -->
+<div class="modal fade" id="showReportModal" tabindex="-1" aria-labelledby="showReportModalLabel"
+     aria-hidden="true" th:fragment="showReportModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="showReportModalLabel">Danh sách báo cáo</h5>
+      </div>
+      <div class="modal-body">
+        <div>
+
+        </div>
+        <table id="show-report-table" class="table mb-0">
+          <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Tên</th>
+            <th class="text-center">Nội dung báo cáo</th>
+            <th class="text-right">Thời gian bình luận</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each = "list,stt : ${listReport}">
+            <td class="text-center" th:text="*{stt.index + 1}"></td>
+            <td class="text-center" th:with="userDetail=${userDetailService.getOneByUserId(list.userId)}">
+              <span th:text="${userDetail.userDetailName}"></span>
+            </td>
+            <td class="text-center" th:text="*{list.foodReportContent}"></td>
+            <td class="text-right" th:text="${#dates.format(list.foodReportCreateDate, 'dd-MM-yyyy HH:mm')}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

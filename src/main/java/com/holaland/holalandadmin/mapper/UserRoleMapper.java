@@ -10,6 +10,10 @@ public class UserRoleMapper implements RowMapper<UserRole> {
 
     @Override
     public UserRole mapRow(ResultSet resultSet, int i) throws SQLException {
-        return null;
+        return UserRole.builder()
+                .userRoleId(resultSet.getInt("user_role_id"))
+                .userId(resultSet.getInt("user_id"))
+                .roleId(resultSet.getInt("role_id"))
+                .build();
     }
 }

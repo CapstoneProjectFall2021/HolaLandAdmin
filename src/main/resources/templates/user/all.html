@@ -16,6 +16,7 @@
           <th class="text-center">#</th>
           <th>Email<i class="fas fa-sort fa-size"></i></th>
           <th>Tên<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Vai trò<i class="fas fa-sort fa-size"></i></th>
           <th class="text-center">Ngày sinh<i class="fas fa-sort fa-size"></i></th>
           <th class="text-right">Giới tính<i class="fas fa-sort fa-size"></i></th>
           <th class="text-center">SĐT<i class="fas fa-sort fa-size"></i></th>
@@ -25,21 +26,49 @@
         <tbody>
         <tr th:each = "info,stt : ${getAllUserInfo}">
           <td class="text-center" th:text="*{stt.index + 1}"></td>
-          <td><a href=""><span th:text = "*{info.userDetailEmail}"></span></a></td>
+          <td><span th:text = "*{info.userDetailEmail}"></span></td>
           <td><span th:text = "*{info.userDetailName}"></span></td>
+          <td th:with="role=${userRoleService.getRole(info.userId)}">
+            <th:block>
+              <span th:text = "*{role.roleId == 1 ? 'Thành viên' :
+                    (role.roleId == 2 ? 'Nhà tuyển dụng' :
+                    (role.roleId == 3 ? 'Bán hàng' : 'Khác'))}">
+              </span>
+            </th:block>
+          </td>
           <td class="text-center">
             <i class="bi bi-calendar3-week me-1"></i><span th:text = "*{#dates.format(info.userDetailDob, 'dd-MM-yyyy')}"></span>
           </td>
           <td class="text-center"><span th:text = "*{info.userDetailGender}==1?'Nam':'Nữ'"></span></td>
           <td class="text-secondary text-right"><span th:text = "*{info.userDetailPhone}"></span></td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-danger">
-              <i class="far fa-trash-alt" data-bs-placement="top" data-bs-toggle="tooltip"
-                 title="Xoá tài khoản" onclick="confirmDeleteUser(event)">
-                <span class="d-none" th:text="${info.userId}"></span>
-                <span class="d-none" th:text="${status}"></span>
-              </i>
-            </a>
+          <td class="text-right" th:with="sttAccount=${userService.getOne(info.userId)}">
+            <th:block th:if = "*{sttAccount.userStatusId == 1}">
+              <a href="javascript:void(0)" class="text-warning me-6">
+                <i class="fas fa-lock" data-bs-placement="top" data-bs-toggle="tooltip"
+                   title="Khóa tài khoản" onclick="confirmLockUser(event)">
+                  <span class="d-none" th:text="${info.userId}"></span>
+                  <span class="d-none" th:text="${status}"></span>
+                </i>
+              </a>
+            </th:block>
+            <th:block th:if = "*{sttAccount.userStatusId == 2}">
+              <a href="javascript:void(0)" class="text-primary me-6">
+                <i class="fas fa-lock-open" data-bs-placement="top" data-bs-toggle="tooltip"
+                   title="Mở Khóa tài khoản" onclick="confirmUnlockUser(event)">
+                  <span class="d-none" th:text="${info.userId}"></span>
+                  <span class="d-none" th:text="${status}"></span>
+                </i>
+              </a>
+            </th:block>
+            <th:block>
+              <a href="javascript:void(0)" class="text-danger">
+                <i class="far fa-trash-alt" data-bs-placement="top" data-bs-toggle="tooltip"
+                   title="Xoá tài khoản" onclick="confirmDeleteUser(event)">
+                  <span class="d-none" th:text="${info.userId}"></span>
+                  <span class="d-none" th:text="${status}"></span>
+                </i>
+              </a>
+            </th:block>
           </td>
         </tr>
         </tbody>

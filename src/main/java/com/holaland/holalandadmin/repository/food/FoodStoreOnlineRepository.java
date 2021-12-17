@@ -1,4 +1,4 @@
-package com.holaland.holalandadmin.repository;
+package com.holaland.holalandadmin.repository.food;
 
 import com.holaland.holalandadmin.entity.food.FoodStoreOnline;
 import org.springframework.dao.DataAccessException;
@@ -10,6 +10,8 @@ public interface FoodStoreOnlineRepository {
 
     FoodStoreOnline getOne(int id) throws DataAccessException;
 
-    boolean delete(int id) throws DataAccessException;
+    boolean lock(int id) throws DataAccessException;
+
+    boolean unlock(int id) throws DataAccessException;
 
 }

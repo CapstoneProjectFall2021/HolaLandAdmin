@@ -1,0 +1,38 @@
+<!-- Modal show comment -->
+<div class="modal fade" id="showCommentModal" tabindex="-1" aria-labelledby="showCommentModalLabel"
+     aria-hidden="true" th:fragment="showCommentModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="showCommentModalLabel">Danh sách bình luận</h5>
+      </div>
+      <div class="modal-body">
+        <table id="show-comment-table" class="table mb-0">
+          <thead>
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Tên</th>
+            <th class="text-center">Đánh giá</th>
+            <th class="text-center">Nội dung bình luận</th>
+            <th class="text-right">Thời gian bình luận</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each = "list,stt : ${listComment}">
+            <td class="text-center" th:text="*{stt.index + 1}"></td>
+            <td class="text-center" th:with="userDetail=${userDetailService.getOneByUserId(list.userId)}">
+              <span th:text="${userDetail.userDetailName}"></span>
+            </td>
+            <td class="text-center" th:text="*{list.foodStoreOnlineRatePoint}"></td>
+            <td class="text-center" th:text="*{list.foodStoreOnlineRateComment}"></td>
+            <td class="text-right" th:text="${#dates.format(list.foodStoreOnlineRateCreateTime, 'dd-MM-yyyy HH:mm')}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
