@@ -9,5 +9,7 @@ public interface WorkRequestFindJobService {
 
     List<WorkRequestFindJob> getAll() throws DataAccessException;
 
+    WorkRequestFindJob getOne(int id) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
 }

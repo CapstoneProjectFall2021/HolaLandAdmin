@@ -15,13 +15,11 @@
         <tr>
           <th class="text-center">#</th>
           <th>Tên<i class="fas fa-sort fa-size"></i></th>
-          <th>Giới tính<i class="fas fa-sort fa-size"></i></th>
-          <th>Số điện thoại<i class="fas fa-sort fa-size"></i></th>
-          <th>Bằng lái<i class="fas fa-sort fa-size"></i></th>
-          <th>Phương tiện<i class="fas fa-sort fa-size"></i></th>
-          <th>Thời gian bắt đầu<i class="fas fa-sort fa-size"></i></th>
-          <th>Thời gian kết thúc<i class="fas fa-sort fa-size"></i></th>
-          <th>Đánh giá<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Giới tính<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Số điện thoại<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Bằng lái<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Phương tiện<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Thời gian làm việc<i class="fas fa-sort fa-size"></i></th>
           <th>Trạng thái<i class="fas fa-sort fa-size"></i></th>
           <th>Thêm<i class="fas fa-sort fa-size"></i></th>
         </tr>
@@ -30,13 +28,14 @@
         <tr th:each = "motorbike, stt : ${motorbikeTaxiDriversList}">
           <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
           <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversName}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversGender ? 'Nam' : 'Nữ'}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversPhone}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversLicensePlates}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversVehicleType}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversStartTime}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversEndTime}"></span></td>
-          <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversRating}"></span></td>
+          <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversGender ? 'Nam' : 'Nữ'}"></span></td>
+          <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversPhone}"></span></td>
+          <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversLicensePlates}"></span></td>
+          <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversVehicleType}"></span></td>
+          <td class="text-center">
+            <span th:text="*{motorbike.tfMotorbikeTaxiDriversStartTime} + ' - ' + *{motorbike.tfMotorbikeTaxiDriversEndTime}">
+            </span>
+          </td>
           <td>
             <span th:classappend="*{motorbike.tfMotorbikeTaxiDriversStatus == 1 ? 'color-success' : 'text-danger'}"
                   th:text="*{motorbike.tfMotorbikeTaxiDriversStatus == 1 ? 'Đang hoạt động' : 'Đã dừng'}">

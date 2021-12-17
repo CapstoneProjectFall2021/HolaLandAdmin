@@ -4,6 +4,7 @@ import com.holaland.holalandadmin.entity.work.WorkRequestFindJob;
 import com.holaland.holalandadmin.entity.work.WorkRequestRecruitment;
 import com.holaland.holalandadmin.service.UserDetailService;
 import com.holaland.holalandadmin.service.work.*;
+import com.holaland.holalandadmin.util.Format;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,11 +45,22 @@ public class WorkController {
     public String recruitment(Model model) {
         List<WorkRequestRecruitment> workList = workRequestRecruitmentService.getAll();
         model.addAttribute("workList", workList);
+        model.addAttribute("format", new Format());
+        model.addAttribute("page", 4);
+        return "index";
+    }
+
+    @GetMapping("/work/recruitment/detail")
+    public String recruitmentDetail(@RequestParam("recruitmentId") int recruitmentId,Model model) {
+        List<WorkRequestRecruitment> workList = workRequestRecruitmentService.getAll();
+        WorkRequestRecruitment workRecruitment = workRequestRecruitmentService.getOne(recruitmentId);
+        model.addAttribute("workList", workList);
+        model.addAttribute("workRecruitment",workRecruitment);
         model.addAttribute("workPaymentMethodService",workPaymentMethodService);
         model.addAttribute("workRequestTypeService",workRequestTypeService);
         model.addAttribute("workSalaryUnitService",workSalaryUnitService);
-        model.addAttribute("workTimeService",workTimeService);
         model.addAttribute("userDetailService",userDetailService);
+        model.addAttribute("format", new Format());
         model.addAttribute("page", 4);
         return "index";
     }
@@ -63,11 +75,23 @@ public class WorkController {
     public String findJob(Model model) {
         List<WorkRequestFindJob> workerList = workRequestFindJobService.getAll();
         model.addAttribute("workerList", workerList);
+        model.addAttribute("format", new Format());
+        model.addAttribute("page", 5);
+        return "index";
+    }
+
+    @GetMapping("/work/find-job/detail")
+    public String findJobDetail(@RequestParam("findJobId") int findJobId, Model model) {
+        List<WorkRequestFindJob> workerList = workRequestFindJobService.getAll();
+        WorkRequestFindJob workFindJob = workRequestFindJobService.getOne(findJobId);
+        model.addAttribute("workerList", workerList);
+        model.addAttribute("workFindJob", workFindJob);
         model.addAttribute("workPaymentMethodService",workPaymentMethodService);
         model.addAttribute("workRequestTypeService",workRequestTypeService);
         model.addAttribute("workSalaryUnitService",workSalaryUnitService);
         model.addAttribute("workTimeService",workTimeService);
         model.addAttribute("userDetailService",userDetailService);
+        model.addAttribute("format", new Format());
         model.addAttribute("page", 5);
         return "index";
     }

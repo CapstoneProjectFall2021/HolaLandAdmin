@@ -67,6 +67,12 @@
     <!-- Import modal confirm delete user -->
     <div th:replace="user/modal/modal-confirm-delete-user :: confirmDeleteUserModal"></div>
   </th:block>
+  <th:block th:if="${page == 4 && workRecruitment != null}">
+    <div th:replace="work/modal/modal-show-detail-recruitment :: showDetailRecruitmentModal"></div>
+  </th:block>
+  <th:block th:if="${page == 5 && workFindJob != null}">
+    <div th:replace="work/modal/modal-show-detail-find-job :: showDetailFindJobModal"></div>
+  </th:block>
   <th:block th:if="${page == 6}">
     <!-- Import modal confirm delete online store -->
     <div th:replace="food/modal/modal-confirm-delete-online-store :: confirmDeleteOnlineStoreModal"></div>
@@ -141,6 +147,16 @@
 
   <script th:if="${busStop != null && busStop.size() != 0}">
       const myModal = new bootstrap.Modal(document.getElementById('showBusStopModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${workRecruitment != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('showDetailRecruitmentModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${workFindJob != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('showDetailFindJobModal'));
       myModal.show();
   </script>
 

@@ -27,6 +27,11 @@ public class WorkRequestRecruitmentRepositoryImpl implements WorkRequestRecruitm
     }
 
     @Override
+    public WorkRequestRecruitment getOne(int id) throws DataAccessException {
+        return jdbcTemplate.queryForObject(WORK_REQUEST_RECRUITMENT_GET_ONE, new WorkRequestRecruitmentMapper(), id);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return jdbcTemplate.update(
                 WORK_REQUEST_RECRUITMENT_DELETED_ONE,

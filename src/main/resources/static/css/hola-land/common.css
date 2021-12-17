@@ -426,6 +426,22 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.panel {
+  border-radius: 12px;
+  border: 1px solid;
+  position: relative;
+  transition: 0.4s;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.panel-text {
+  border-radius: 12px;
+  border: 1px solid;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+}
+
 .modal-content .content {
   margin-top: 4px;
   font-size: 19px;
@@ -434,11 +450,12 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   justify-content: space-between;
 }
 
-.modal-content .content .pre {
+.pre {
   white-space: pre-wrap;
   border-radius: 12px;
   padding: 14px 20px;
   margin-bottom: 16px;
+  font-size: initial;
 }
 
 .modal-description {

@@ -9,5 +9,7 @@ public interface WorkRequestRecruitmentRepository {
 
     List<WorkRequestRecruitment> getAll() throws DataAccessException;
 
+    WorkRequestRecruitment getOne(int id) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
 }

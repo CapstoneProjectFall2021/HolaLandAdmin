@@ -26,6 +26,11 @@ public class WorkRequestRecruitmentServiceImpl implements WorkRequestRecruitment
     }
 
     @Override
+    public WorkRequestRecruitment getOne(int id) throws DataAccessException {
+        return workRequestRecruitmentRepository.getOne(id);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return workRequestRecruitmentRepository.delete(id);
     }

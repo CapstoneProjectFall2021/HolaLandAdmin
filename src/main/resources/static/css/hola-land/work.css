@@ -1,0 +1,46 @@
+/* Request detail */
+
+.request-detail .request-title h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.request-detail .request-title p {
+  margin-bottom: 0;
+}
+
+.request-detail .request-title .apply-area {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+}
+
+.request-detail .request-title .apply-area .apply-area-btn {
+  width: 100%;
+}
+
+.request-detail .request-title .btn-apply a,
+.request-detail .request-title .btn-save-request a {
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+}
+
+.request-detail .row-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-bg {
+  padding: 20px 20px 4px 20px !important;
+}
+
+.sub-title {
+  font-size: 18px;
+  margin: 0 20px 14px 20px;
+  font-weight: 400;
+}

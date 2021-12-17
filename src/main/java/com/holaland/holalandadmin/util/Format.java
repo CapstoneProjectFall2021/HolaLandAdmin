@@ -12,4 +12,14 @@ public class Format {
         }
         return strId;
     }
+
+    public static String title(String title, int length) {
+        String shortTitle;
+        if(title.length() <= length) {
+            shortTitle = title;
+        }else {
+            shortTitle = title.substring(0,length) + "...";
+        }
+        return shortTitle;
+    }
 }

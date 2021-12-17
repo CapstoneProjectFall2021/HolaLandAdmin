@@ -1,0 +1,95 @@
+<!-- Modal show detail find job-->
+<div class="modal fade" id="showDetailFindJobModal" tabindex="-1" aria-labelledby="showDetailFindJobModalLabel"
+     aria-hidden="true" role="dialog" th:fragment="showDetailFindJobModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="showDetailFindJobModalLabel">
+          <span>Chi tiết bài viết</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body preview-bg">
+        <div class="request-detail">
+          <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+              <div class="panel request-title">
+                <div class="row">
+                  <div class="col-md-12 col-lg-12 col-xl-12">
+                    <h3 th:text="${workFindJob.workRequestFindJobTitle}"></h3>
+                    <p><i class="fas fa-user fa-fw"></i> Người đăng:
+                      <th:block th:with="user=${userDetailService.getOneByUserId(workFindJob.userId)}">
+                        <span th:text="*{user.userDetailName}"></span>
+                      </th:block>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <h2 class="sub-title">Thông tin yêu cầu</h2>
+              <div class="panel-text">
+                <div class="row-info">
+                  <div><i class="fas fa-coins fa-fw"></i>Mức lương mong muốn</div>
+                  <div>
+                    <span th:text="${#numbers.formatInteger(workFindJob.workRequestFindJobExpectedSalary, 3, 'POINT')}">
+                    </span> VNĐ
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fas fa-cash-register fa-fw"></i>Đơn vị tính lương</div>
+                  <div>
+                    <th:block th:with="unit=${workSalaryUnitService.getOne(workFindJob.workSalaryUnitId)}">
+                      <span th:text="${unit.workSalaryUnitName}"></span>
+                    </th:block>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fas fa-exchange-alt fa-fw"></i>Hình thức thanh toán</div>
+                  <div>
+                    <th:block th:with="payment=${workPaymentMethodService.getOne(workFindJob.workPaymentMethodId)}">
+                      <span th:text="*{payment.workPaymentMethodName}"></span>
+                    </th:block>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fas fa-user-clock fa-fw"></i>Hình thức làm việc</div>
+                  <div>
+                    <th:block th:with="type=${workRequestTypeService.getOne(workFindJob.workRequestTypeId)}">
+                      <span th:text="*{type.workRequestTypeName}"></span>
+                    </th:block>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fas fa-user-friends fa-fw"></i>Thời gian làm việc</div>
+                  <div>
+                    <th:block th:with="time=${workTimeService.getOne(workFindJob.workTimeId)}">
+                      <span th:text="*{time.workTimeName}"></span>
+                    </th:block>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fas fa-map-marker-alt fa-fw"></i>Địa điểm làm việc mong muốn</div>
+                  <div th:text="*{workFindJob.workRequestFindJobExpectedLocation}"></div>
+                </div>
+              </div>
+              <h2 class="sub-title">Mô tả</h2>
+              <div class="panel-text">
+                <pre class="pre" th:text="${workFindJob.workRequestFindJobDescription}"></pre>
+              </div>
+              <h2 class="sub-title">Kinh nghiệm</h2>
+              <div class="panel-text">
+                <pre class="pre" th:text="${workFindJob.workRequestFindJobPersonalExperience}"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
