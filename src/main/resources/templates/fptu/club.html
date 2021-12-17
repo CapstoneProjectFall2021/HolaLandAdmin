@@ -25,7 +25,7 @@
         <tr th:each = "club, stt : ${clubList}">
           <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
           <td><span th:text="*{club.fptuClubName}"></span></td>
-          <td><span th:text="*{club.fptuClubContactName}"></span></td>
+          <td><span class="span" th:text="*{club.fptuClubContactName}"></span></td>
           <td><span th:text="*{club.fptuClubContactEmail}"></span></td>
           <td><span th:text="*{club.fptuClubContactPhoneNumber}"></span></td>
           <td>

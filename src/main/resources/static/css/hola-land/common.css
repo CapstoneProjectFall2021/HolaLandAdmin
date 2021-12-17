@@ -458,6 +458,10 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   font-size: initial;
 }
 
+.span {
+  white-space: pre-wrap;
+}
+
 .modal-description {
   max-width: 1000px;
 }
