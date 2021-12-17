@@ -25,6 +25,11 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
+    public Club getOne(int id) throws DataAccessException {
+        return clubRepository.getOne(id);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return clubRepository.delete(id);
     }

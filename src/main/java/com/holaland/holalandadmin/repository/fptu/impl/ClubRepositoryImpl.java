@@ -27,6 +27,11 @@ public class ClubRepositoryImpl implements ClubRepository, IRepositoryQuery {
     }
 
     @Override
+    public Club getOne(int id) throws DataAccessException {
+        return jdbcTemplate.queryForObject(FPTU_CLUB_GET_ONE, new ClubMapper(), id);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return jdbcTemplate.update(
                 FPTU_CLUB_DELETE_ONE,

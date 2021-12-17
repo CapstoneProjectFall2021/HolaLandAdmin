@@ -1,0 +1,77 @@
+<!-- Modal show club detail -->
+<div class="modal fade club-info" id="showClubDetailModal" tabindex="-1" aria-labelledby="showClubDetailModalLabel"
+     aria-hidden="true" th:fragment="showClubDetailModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="showClubDetailModalLabel" th:if="${currentClub.fptuClubNameEn.length == 0}">
+          <span th:text="${currentClub.fptuClubName}"></span>
+        </h5>
+        <h5 class="modal-title" id="showClubDetailModalLabel" th:if="${currentClub.fptuClubNameEn.length != 0}">
+          <span th:text="${currentClub.fptuClubName}"></span> -
+          <span th:text="${currentClub.fptuClubNameEn}"></span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-lg-6">
+            <h2 class="sub-title-small">Logo</h2>
+            <div class="img">
+              <img class="media-object" th:src="|data:image/png;base64,${currentClub.fptuClubLogo}|" alt="">
+            </div>
+            <h2 class="sub-title-small">Image Club</h2>
+            <div class="img">
+              <img class="media-object" th:src="|../../images/club/${currentClub.fptuClubImage}|" alt="">
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6">
+            <div class="description">
+              <h2 class="sub-title-small">Giới thiệu</h2>
+              <pre class="pre" th:text="${currentClub.fptuClubDescription}"></pre>
+              <h2 class="sub-title-small">Thành tích</h2>
+              <pre class="pre" th:text="${currentClub.fptuClubAchievements}"></pre>
+              <h2 class="sub-title-small">Thông tin CLB</h2>
+              <div class="contact">
+                <div class="row-info mt-0">
+                  <div><i class="fas fa-user fa-fw"></i>Số lượng thành viên</div>
+                  <div>
+                    <pre class="text-end" th:text="${currentClub.fptuClubMemberQuantity}"></pre>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fas fa-bookmark fa-fw"></i>Loại câu lạc bộ</div>
+                  <div>
+                    <th:block th:with="clubType=${clubTypeService.getOne(currentClub.fptuClubTypeId)}">
+                      <span th:text="${clubType.fptuClubTypeName}"></span>
+                    </th:block>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fab fa-facebook-square fa-fw"></i>Tên fanpage</div>
+                  <div>
+                    <span th:text="${currentClub.fptuClubFanpageName}"></span>
+                  </div>
+                </div>
+                <div class="row-info">
+                  <div><i class="fa fa-globe fa-fw"></i>Fanpage</div>
+                  <div>
+                    <span th:text="${currentClub.fptuClubFanpage}"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

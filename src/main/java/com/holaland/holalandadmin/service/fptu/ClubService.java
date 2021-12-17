@@ -9,5 +9,7 @@ public interface ClubService {
 
     List<Club> getAll() throws DataAccessException;
 
+    Club getOne(int id) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
 }

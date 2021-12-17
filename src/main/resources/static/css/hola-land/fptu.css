@@ -1,0 +1,48 @@
+.sub-title-small {
+  font-size: 18px;
+  margin: 0 20px 14px 20px;
+  font-weight: 400;
+}
+
+.club-info .modal-content .modal-body .flex {
+  display: flex;
+}
+
+.club-info .modal-content .modal-body .img img {
+  width: 100%;
+  border-radius: 12px;
+  transition: 0.5s;
+  margin-bottom: 18px;
+}
+
+.club-info .modal-content .modal-body .img img:hover {
+  transform: scale(1.01, 1.01);
+}
+
+.club-info .modal-content .modal-body .description p,
+.club-info .modal-content .modal-body .description .pre,
+.club-info .modal-content .modal-body .description .contact {
+  border: 1px solid;
+  padding: 14px 20px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.club-info .modal-content .modal-body .description .row-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: initial;
+}
+
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.media .media-object {
+  border-radius: 50%;
+}

@@ -27,6 +27,16 @@ public class FPTUniversityController {
     public String club(Model model) {
         List<Club> clubList = clubService.getAll();
         model.addAttribute("clubList", clubList);
+        model.addAttribute("page", 3);
+        return "index";
+    }
+
+    @GetMapping("/club/detail")
+    public String club(@RequestParam("clubId") int clubId, Model model) {
+        List<Club> clubList = clubService.getAll();
+        Club currentClub = clubService.getOne(clubId);
+        model.addAttribute("clubList", clubList);
+        model.addAttribute("currentClub", currentClub);
         model.addAttribute("clubTypeService", clubTypeService);
         model.addAttribute("page", 3);
         return "index";

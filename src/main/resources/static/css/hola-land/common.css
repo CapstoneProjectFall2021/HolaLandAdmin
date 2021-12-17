@@ -481,3 +481,8 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   padding-left: 40px;
   list-style: none;
 }
+
+.description {
+  margin-top: 4px;
+  font-size: 14px;
+}

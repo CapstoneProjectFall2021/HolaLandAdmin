@@ -15,6 +15,7 @@
   <link rel="stylesheet" th:href="@{/css/hola-land/common.css}"/>
   <link rel="stylesheet" th:href="@{/css/hola-land/dashboard.css}"/>
   <link rel="stylesheet" th:href="@{/css/hola-land/work.css}"/>
+  <link rel="stylesheet" th:href="@{/css/hola-land/fptu.css}"/>
 
   <title>Dashboard</title>
 </head>
@@ -66,6 +67,9 @@
   <th:block th:if="${page == 2}">
     <!-- Import modal confirm delete user -->
     <div th:replace="user/modal/modal-confirm-delete-user :: confirmDeleteUserModal"></div>
+  </th:block>
+  <th:block th:if="${page == 3 && currentClub != null}">
+    <div th:replace="fptu/modal/modal-show-club-detail :: showClubDetailModal"></div>
   </th:block>
   <th:block th:if="${page == 4 && workRecruitment != null}">
     <div th:replace="work/modal/modal-show-detail-recruitment :: showDetailRecruitmentModal"></div>
@@ -147,6 +151,11 @@
 
   <script th:if="${busStop != null && busStop.size() != 0}">
       const myModal = new bootstrap.Modal(document.getElementById('showBusStopModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${currentClub != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('showClubDetailModal'));
       myModal.show();
   </script>
 
