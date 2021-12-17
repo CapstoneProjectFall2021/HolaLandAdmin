@@ -21,11 +21,6 @@
                 <div class="row">
                   <div class="col-md-12 col-lg-12 col-xl-12">
                     <h3 th:text="${workRecruitment.workRequestRecruitmentTitle}"></h3>
-                    <p><i class="fas fa-user fa-fw"></i> Người đăng:
-                      <th:block th:with="user=${userDetailService.getOneByUserId(workRecruitment.userId)}">
-                        <span th:text="*{user.userDetailName}"></span>
-                      </th:block>
-                    </p>
                     <p>
                       <i class="fas fa-map-marker-alt fa-fw"></i>
                       <span th:text="${workRecruitment.workRequestRecruitmentWorkLocation}"></span>
@@ -36,11 +31,11 @@
               <h2 class="sub-title">Thông tin tuyển dụng</h2>
               <div class="panel-text">
                 <div class="row-info">
-                  <div><i class="fas fa-coins fa-fw"></i>Mức lương</div>
+                  <div><i class="fas fa-coins fa-fw"></i> Mức lương</div>
                   <div th:text="${workRecruitment.workRequestRecruitmentSalary}"></div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-cash-register fa-fw"></i>Đơn vị tính lương</div>
+                  <div><i class="fas fa-cash-register fa-fw"></i> Đơn vị tính lương</div>
                   <div>
                     <th:block th:with="unit=${workSalaryUnitService.getOne(workRecruitment.workSalaryUnitId)}">
                       <span th:text="${unit.workSalaryUnitName}"></span>
@@ -48,7 +43,7 @@
                   </div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-exchange-alt fa-fw"></i>Hình thức thanh toán</div>
+                  <div><i class="fas fa-exchange-alt fa-fw"></i> Hình thức thanh toán</div>
                   <div>
                     <th:block th:with="payment=${workPaymentMethodService.getOne(workRecruitment.workPaymentMethodId)}">
                       <span th:text="${payment.workPaymentMethodName}"></span>
@@ -56,7 +51,7 @@
                   </div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-user-clock fa-fw"></i>Hình thức làm việc</div>
+                  <div><i class="fas fa-user-clock fa-fw"></i> Hình thức làm việc</div>
                   <div>
                     <th:block th:with="type=${workRequestTypeService.getOne(workRecruitment.workRequestTypeId)}">
                       <span th:text="*{type.workRequestTypeName}"></span>
@@ -64,15 +59,15 @@
                   </div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-user-friends fa-fw"></i>Số lượng cần tuyển</div>
+                  <div><i class="fas fa-user-friends fa-fw"></i> Số lượng cần tuyển</div>
                   <div th:text="${workRecruitment.workRequestRecruitmentQuantity}"></div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-user-plus fa-fw"></i>Yêu cầu kinh nghiệm</div>
+                  <div><i class="fas fa-user-plus fa-fw"></i> Yêu cầu kinh nghiệm</div>
                   <div th:text="${workRecruitment.workRequestRecruitmentExperienceRequirement ? 'Có' : 'Không'}"></div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-venus-mars fa-fw"></i>Yêu cầu giới tính</div>
+                  <div><i class="fas fa-venus-mars fa-fw"></i> Yêu cầu giới tính</div>
                   <div th:text="${workRecruitment.workRequestRecruitmentGenderRequirement ? 'Có' : 'Không'}"></div>
                 </div>
               </div>

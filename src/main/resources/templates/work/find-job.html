@@ -14,6 +14,7 @@
         <thead>
         <tr>
           <th class="text-center">#</th>
+          <th>Người đăng<i class="fas fa-sort fa-size"></i></th>
           <th>Tiêu đề<i class="fas fa-sort fa-size"></i></th>
           <th>Ngày tạo<i class="fas fa-sort fa-size"></i></th>
           <th>Ngày hết hạn<i class="fas fa-sort fa-size"></i></th>
@@ -24,6 +25,11 @@
         <tbody>
         <tr th:each = "worker, stt : ${workerList}">
           <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
+          <td>
+            <th:block th:with="user=${userDetailService.getOneByUserId(worker.userId)}">
+              <span th:text="*{user.userDetailName}"></span>
+            </th:block>
+          </td>
           <td><span th:text="${format.title(worker.workRequestFindJobTitle, 25)}"></span></td>
           <td><span th:text="*{#dates.format(worker.workRequestFindJobStartDateTime, 'dd-MM-yyyy')}"></span></td>
           <td><span th:text="*{#dates.format(worker.workRequestFindJobEndDateTime, 'dd-MM-yyyy')}"></span></td>
@@ -39,16 +45,8 @@
             </span>
           </td>
           <td class="text-right">
-            <th:block th:if="*{worker.workRequestFindJobNote != null}">
-              <a href="javascript:void(0)" class="text-info mr-2">
-                <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"
-                   onclick="showContent(event)">
-                  <span class="d-none" th:text="*{worker.workRequestFindJobNote}"></span>
-                </i>
-              </a>
-            </th:block>
             <a th:href="@{/work/find-job/detail(findJobId=*{worker.workRequestFindJobId})}">
-              <i class="fas fa-eye text-warning mr-2"></i>
+              <i class="fas fa-eye text-info mr-2"></i>
             </a>
             <th:block th:if="*{worker.sttWorkCode == 1}">
               <a href="javascript:void(0)" class="text-success mr-2">

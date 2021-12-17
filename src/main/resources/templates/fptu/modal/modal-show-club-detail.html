@@ -20,10 +20,6 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12 col-lg-6">
-            <h2 class="sub-title-small">Logo</h2>
-            <div class="img">
-              <img class="media-object" th:src="|data:image/png;base64,${currentClub.fptuClubLogo}|" alt="">
-            </div>
             <h2 class="sub-title-small">Image Club</h2>
             <div class="img">
               <img class="media-object" th:src="|../../images/club/${currentClub.fptuClubImage}|" alt="">
@@ -37,10 +33,10 @@
               <pre class="pre" th:text="${currentClub.fptuClubAchievements}"></pre>
               <h2 class="sub-title-small">Thông tin CLB</h2>
               <div class="contact">
-                <div class="row-info mt-0">
+                <div class="row-info">
                   <div><i class="fas fa-user fa-fw"></i>Số lượng thành viên</div>
                   <div>
-                    <pre class="text-end" th:text="${currentClub.fptuClubMemberQuantity}"></pre>
+                    <span th:text="${currentClub.fptuClubMemberQuantity}"></span>
                   </div>
                 </div>
                 <div class="row-info">

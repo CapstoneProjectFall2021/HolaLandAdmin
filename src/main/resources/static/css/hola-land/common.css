@@ -444,7 +444,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .modal-content .content {
   margin-top: 4px;
-  font-size: 19px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;

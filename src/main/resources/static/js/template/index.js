@@ -70,3 +70,9 @@ function confirmDeleteMotorbikeTaxi(e) {
     document.getElementById("btn-delete").href = "/motorbike-taxi-drivers/delete?motorbikeId="+motorbikeId;
     openModal("confirmDeleteModal");
 }
+
+function showInfoBus(e) {
+    const busInfo = e.target.firstElementChild.innerHTML;
+    document.getElementById("bus-info").innerHTML = busInfo;
+    openModal("showBusInfoModal");
+}

@@ -15,7 +15,7 @@
         <tr>
           <th class="text-center">#</th>
           <th>Tên câu lạc bộ<i class="fas fa-sort fa-size"></i></th>
-          <th>Tên người liên hệ<i class="fas fa-sort fa-size"></i></th>
+          <th>Người liên hệ<i class="fas fa-sort fa-size"></i></th>
           <th>Email liên hệ<i class="fas fa-sort fa-size"></i></th>
           <th>Số điện thoại<i class="fas fa-sort fa-size"></i></th>
           <th>Thêm<i class="fas fa-sort fa-size"></i></th>
@@ -28,9 +28,9 @@
           <td><span th:text="*{club.fptuClubContactName}"></span></td>
           <td><span th:text="*{club.fptuClubContactEmail}"></span></td>
           <td><span th:text="*{club.fptuClubContactPhoneNumber}"></span></td>
-          <td class="text-right">
+          <td>
             <a th:href="@{/club/detail(clubId=*{club.fptuClubId})}">
-              <i class="fas fa-eye text-warning mr-2"></i>
+              <i class="fas fa-eye text-info mr-2"></i>
             </a>
             <a href="javascript:void(0)" class="color-danger">
               <i class="far fa-trash-alt" onclick="confirmDeleteClub(event)">

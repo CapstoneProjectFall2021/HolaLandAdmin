@@ -45,6 +45,7 @@ public class WorkController {
     public String recruitment(Model model) {
         List<WorkRequestRecruitment> workList = workRequestRecruitmentService.getAll();
         model.addAttribute("workList", workList);
+        model.addAttribute("userDetailService",userDetailService);
         model.addAttribute("format", new Format());
         model.addAttribute("page", 4);
         return "index";
@@ -81,6 +82,7 @@ public class WorkController {
     public String findJob(Model model) {
         List<WorkRequestFindJob> workerList = workRequestFindJobService.getAll();
         model.addAttribute("workerList", workerList);
+        model.addAttribute("userDetailService",userDetailService);
         model.addAttribute("format", new Format());
         model.addAttribute("page", 5);
         return "index";

@@ -29,7 +29,7 @@
           <td><span th:text="*{bus.tfBusName}"></span></td>
           <td class="text-center"><span th:text="*{bus.tfBusStartTime} + ' - ' + *{bus.tfBusEndTime}"></span></td>
           <td class="text-center">
-            <a href="javascript:void(0)" class="text-info" onclick="showContent(event)">
+            <a href="javascript:void(0)" class="text-info" onclick="showInfoBus(event)">
               <span class="d-none" th:text="*{bus.tfBusInfo}"></span>
               Chi tiết
             </a>
@@ -46,7 +46,7 @@
             </span>
           </td>
           <td class="text-right">
-            <a href="javascript:void(0)" class="color-success">
+            <a href="javascript:void(0)" class="color-success mr-2">
               <i class="fas fa-pencil-alt fa-fw"></i>
             </a>
             <a href="javascript:void(0)" class="color-danger">
