@@ -40,7 +40,7 @@
           </td>
           <td class="text-right">
             <th:block th:if="*{work.workRequestRecruitmentNote != null}">
-              <a href="javascript:void(0)" class="text-info">
+              <a href="javascript:void(0)" class="text-info mr-2">
                 <i class="far fa-comment-dots" data-bs-placement="top" data-bs-toggle="tooltip" title="Lý do từ chối"
                    onclick="showContent(event)">
                   <span class="d-none" th:text="*{work.workRequestRecruitmentNote}"></span>
@@ -48,10 +48,10 @@
               </a>
             </th:block>
             <a th:href="@{/work/recruitment/detail(recruitmentId=*{work.workRequestRecruitmentId})}">
-              <i class="fas fa-eye text-warning"></i>
+              <i class="fas fa-eye text-warning mr-2"></i>
             </a>
             <th:block th:if="*{work.sttWorkCode == 1}">
-              <a href="javascript:void(0)" class="text-success">
+              <a href="javascript:void(0)" class="text-success mr-2">
                 <i class="fas fa-check" onclick="confirmApproveRecruitment(event)">
                   <span class="d-none" th:text="*{work.workRequestRecruitmentId}"></span>
                 </i>
