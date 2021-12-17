@@ -14,36 +14,53 @@
         <thead>
         <tr>
           <th class="text-center">#</th>
-          <th class="text-center">Ảnh<i class="fas fa-sort fa-size"></i></th>
           <th>Tên cửa hàng<i class="fas fa-sort fa-size"></i></th>
           <th class="text-center">Giới thiệu<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-right">Số sao<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Đánh giá<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Số món ăn</th>
+          <th class="text-right">Số bình luận</th>
+          <th class="text-right">Số báo cáo</th>
           <th class="text-right">Thêm<i class="fas fa-sort fa-size"></i></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each = "list,stt : ${storeOnlineList}">
           <td class="text-center" th:text="*{stt.index + 1}"></td>
-          <td class="text-center">
-            <th:block th:if = "${list.foodStoreOnlineImage != null}">
-              <img class="media-object rounded-circle" th:src="@{'/images/food/'+ *{list.foodStoreOnlineImage}}" alt="">
-            </th:block>
-            <th:block th:if = "${list.foodStoreOnlineImage == null}">
-              <img class="media-object" th:src="@{'/images/system/shop.png'}" alt="">
-            </th:block>
-          </td>
           <td><span th:text = "*{list.foodStoreOnlineName}"></span></td>
           <td class="text-center">
             <i class="bi bi-calendar3-week me-1"></i><span th:text = "*{list.foodStoreOnlineDescription}"></span>
           </td>
           <td class="text-center"><span th:text="${#numbers.formatDecimal(list.foodStoreOnlineRate, 1, 1, 'POINT')}"></span></td>
-          <td class="text-right">
-            <a href="javascript:void(0)" class="text-danger">
-              <i class="far fa-trash-alt" data-bs-placement="top" data-bs-toggle="tooltip"
-                 title="Xoá cửa hàng" onclick="confirmDeleteOnlineStore(event)">
-                <span class="d-none" th:text="${list.foodStoreOnlineId}"></span>
-              </i>
+          <td class="text-center"><span th:text = "*{list.foodStoreOnlineCountFoodItem}"></span></td>
+          <td class="text-center">
+            <a th:href="@{/food/online-store/comment(onlineStoreId=*{list.foodStoreOnlineId})}"
+               th:classappend="${list.foodStoreOnlineId == onlineStoreId ? 'active' : ''}">
+            <span th:text = "*{list.foodStoreOnlineCountRate}"></span>
             </a>
+          </td>
+          <td class="text-center">
+            <a th:href="@{/food/online-store/report(onlineStoreId=*{list.foodStoreOnlineId})}"
+               th:classappend="${list.foodStoreOnlineId == onlineStoreId ? 'active' : ''}">
+              <span th:text = "*{list.foodStoreOnlineCountReport}"></span>
+            </a>
+          </td>
+          <td class="text-right">
+            <th:block th:if = "*{list.foodStoreOnlineDeleted == false}">
+              <a href="javascript:void(0)" class="text-warning">
+                <i class="fas fa-lock" data-bs-placement="top" data-bs-toggle="tooltip"
+                   title="Khóa cửa hàng" onclick="confirmLockOnlineStore(event)">
+                  <span class="d-none" th:text="${list.foodStoreOnlineId}"></span>
+                </i>
+              </a>
+            </th:block>
+            <th:block th:if = "*{list.foodStoreOnlineDeleted == true}">
+              <a href="javascript:void(0)" class="text-primary">
+                <i class="fas fa-lock-open" data-bs-placement="top" data-bs-toggle="tooltip"
+                   title="Mở khóa cửa hàng" onclick="confirmUnlockOnlineStore(event)">
+                  <span class="d-none" th:text="${list.foodStoreOnlineId}"></span>
+                </i>
+              </a>
+            </th:block>
           </td>
         </tr>
         </tbody>

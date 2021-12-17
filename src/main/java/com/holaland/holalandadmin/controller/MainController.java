@@ -1,10 +1,15 @@
 package com.holaland.holalandadmin.controller;
 
 import com.holaland.holalandadmin.entity.UserDetail;
+import com.holaland.holalandadmin.entity.food.FoodReport;
 import com.holaland.holalandadmin.entity.food.FoodStoreOnline;
+import com.holaland.holalandadmin.entity.food.FoodStoreOnlineRate;
 import com.holaland.holalandadmin.repository.UserRepository;
-import com.holaland.holalandadmin.service.FoodStoreOnlineService;
+import com.holaland.holalandadmin.service.food.FoodReportService;
+import com.holaland.holalandadmin.service.food.FoodStoreOnlineRateService;
+import com.holaland.holalandadmin.service.food.FoodStoreOnlineService;
 import com.holaland.holalandadmin.service.UserDetailService;
+import com.holaland.holalandadmin.service.UserRoleService;
 import com.holaland.holalandadmin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -26,18 +31,27 @@ public class MainController {
     private final UserDetailService userDetailService;
     private final FoodStoreOnlineService foodStoreOnlineService;
     private final UserService userService;
+    private final UserRoleService userRoleService;
+    private final FoodReportService foodReportService;
+    private final FoodStoreOnlineRateService foodStoreOnlineRateService;
 
     @Autowired
     public MainController(
             UserRepository userRepository,
             UserDetailService userDetailService,
             FoodStoreOnlineService foodStoreOnlineService,
-            UserService userService
+            UserService userService,
+            UserRoleService userRoleService,
+            FoodReportService foodReportService,
+            FoodStoreOnlineRateService foodStoreOnlineRateService
     ){
         this.userRepository = userRepository;
         this.userDetailService = userDetailService;
         this.foodStoreOnlineService = foodStoreOnlineService;
         this.userService = userService;
+        this.userRoleService = userRoleService;
+        this.foodReportService = foodReportService;
+        this.foodStoreOnlineRateService = foodStoreOnlineRateService;
     }
 
     @GetMapping("/")
@@ -57,6 +71,8 @@ public class MainController {
 
         model.addAttribute("getAllUserInfo", getInfo);
         model.addAttribute("status", status);
+        model.addAttribute("userService", userService);
+        model.addAttribute("userRoleService", userRoleService);
         model.addAttribute("page", 2);
         return "index";
     }
@@ -74,6 +90,32 @@ public class MainController {
         }
     }
 
+    @GetMapping("/user/all/unlock")
+    public String unlockUser(
+            @RequestParam("userId") int userId,
+            @RequestParam("status") Integer status
+    ) {
+        boolean isCheck = userService.unlock(userId);
+        if (isCheck) {
+            return "redirect:" + "/user/all?status=" + status;
+        } else {
+            return null;
+        }
+    }
+
+    @GetMapping("/user/all/lock")
+    public String lockUser(
+            @RequestParam("userId") int userId,
+            @RequestParam("status") Integer status
+    ) {
+        boolean isCheck = userService.lock(userId);
+        if (isCheck) {
+            return "redirect:" + "/user/all?status=" + status;
+        } else {
+            return null;
+        }
+    }
+
     @GetMapping("/food/online-store")
     public String onlineStore(Model model) {
         List<FoodStoreOnline> storeOnlineList = foodStoreOnlineService.getAll();
@@ -83,14 +125,48 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("food/online-store/delete")
-    public String deleteOnlineStore(@RequestParam("onlineStoreId") int onlineStoreId) {
-        boolean isCheck = foodStoreOnlineService.delete(onlineStoreId);
+    @GetMapping("/food/online-store/lock")
+    public String lockOnlineStore(@RequestParam("onlineStoreId") int onlineStoreId) {
+        boolean isCheck = foodStoreOnlineService.lock(onlineStoreId);
         if (isCheck) {
             return "redirect:" + "/food/online-store";
         } else {
             return null;
         }
+    }
+
+    @GetMapping("/food/online-store/unlock")
+    public String unlockOnlineStore(@RequestParam("onlineStoreId") int onlineStoreId) {
+        boolean isCheck = foodStoreOnlineService.unlock(onlineStoreId);
+        if (isCheck) {
+            return "redirect:" + "/food/online-store";
+        } else {
+            return null;
+        }
+    }
+
+    @GetMapping("/food/online-store/comment")
+    public String showComment(@RequestParam("onlineStoreId") int onlineStoreId, Model model) {
+        List<FoodStoreOnlineRate> listComment = foodStoreOnlineRateService.getAllCommentByStoreOnlineId(onlineStoreId);
+        List<FoodStoreOnline> storeOnlineList = foodStoreOnlineService.getAll();
+
+        model.addAttribute("storeOnlineList", storeOnlineList);
+        model.addAttribute("listComment", listComment);
+        model.addAttribute("userDetailService", userDetailService);
+        model.addAttribute("page", 6);
+        return "index";
+    }
+
+    @GetMapping("/food/online-store/report")
+    public String showReport(@RequestParam("onlineStoreId") int onlineStoreId, Model model) {
+        List<FoodReport> listReport = foodReportService.getAllByStoreOnlineId(onlineStoreId);
+        List<FoodStoreOnline> storeOnlineList = foodStoreOnlineService.getAll();
+
+        model.addAttribute("storeOnlineList", storeOnlineList);
+        model.addAttribute("listReport", listReport);
+        model.addAttribute("userDetailService", userDetailService);
+        model.addAttribute("page", 6);
+        return "index";
     }
 
     @GetMapping("/login")

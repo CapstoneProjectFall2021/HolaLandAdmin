@@ -2,7 +2,7 @@ package com.holaland.holalandadmin.repository.impl;
 
 import com.holaland.holalandadmin.entity.food.FoodStoreOnline;
 import com.holaland.holalandadmin.mapper.food.FoodStoreOnlineMapper;
-import com.holaland.holalandadmin.repository.FoodStoreOnlineRepository;
+import com.holaland.holalandadmin.repository.food.FoodStoreOnlineRepository;
 import com.holaland.holalandadmin.repository.IRepositoryQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -32,8 +32,13 @@ public class FoodStoreOnlineRepositoryImpl implements FoodStoreOnlineRepository,
     }
 
     @Override
-    public boolean delete(int id) throws DataAccessException {
-        return jdbcTemplate.update(FOOD_STORE_ONLINE_DELETE_ONE, id) > 0;
+    public boolean lock(int id) throws DataAccessException {
+        return jdbcTemplate.update(FOOD_STORE_ONLINE_LOCK_ONE, id) > 0;
+    }
+
+    @Override
+    public boolean unlock(int id) throws DataAccessException {
+        return jdbcTemplate.update(FOOD_STORE_ONLINE_UNLOCK_ONE, id) > 0;
     }
 
 }

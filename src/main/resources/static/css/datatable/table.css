@@ -112,6 +112,15 @@
   float: right;
 }
 
+#show-comment-table_filter {
+
+  float: right;
+}
+#show-report-table_filter {
+
+  float: right;
+}
+
 .datatable label {
   display: inline-block;
   max-width: 100%;

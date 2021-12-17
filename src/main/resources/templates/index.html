@@ -66,11 +66,23 @@
   <th:block th:if="${page == 2}">
     <!-- Import modal confirm delete user -->
     <div th:replace="user/modal/modal-confirm-delete-user :: confirmDeleteUserModal"></div>
+    <!-- Import modal confirm lock user -->
+    <div th:replace="user/modal/modal-confirm-lock-user :: confirmLockUserModal"></div>
+    <!-- Import modal confirm unlock user -->
+    <div th:replace="user/modal/modal-confirm-unlock-user :: confirmUnlockUserModal"></div>
   </th:block>
+
   <th:block th:if="${page == 6}">
-    <!-- Import modal confirm delete online store -->
-    <div th:replace="food/modal/modal-confirm-delete-online-store :: confirmDeleteOnlineStoreModal"></div>
+    <!-- Import modal confirm lock online store -->
+    <div th:replace="food/modal/modal-confirm-lock-online-store :: confirmLockOnlineStoreModal"></div>
+    <!-- Import modal confirm unlock online store -->
+    <div th:replace="food/modal/modal-confirm-unlock-online-store :: confirmUnlockOnlineStoreModal"></div>
+    <!-- Import modal show comment -->
+    <div th:replace="food/modal/modal-show-comment :: showCommentModal"></div>
+    <!-- Import modal show report -->
+    <div th:replace="food/modal/modal-show-report :: showReportModal"></div>
   </th:block>
+
   <th:block th:if="${page == 7}">
     <div th:replace="traffic/modal/modal-show-bus-stop :: showBusStopModal"></div>
   </th:block>
@@ -150,6 +162,16 @@
         $('.toast').toast('show');
       });
     });
+  </script>
+
+  <script th:if="${listComment != null && listComment.size() != 0}">
+      const myModal = new bootstrap.Modal(document.getElementById('showCommentModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${listReport != null && listReport.size() != 0}">
+      const myModal = new bootstrap.Modal(document.getElementById('showReportModal'));
+      myModal.show();
   </script>
 
 </body>

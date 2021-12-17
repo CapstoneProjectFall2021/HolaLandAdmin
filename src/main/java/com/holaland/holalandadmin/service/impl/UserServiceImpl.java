@@ -3,6 +3,7 @@ package com.holaland.holalandadmin.service.impl;
 import com.holaland.holalandadmin.entity.CustomUser;
 import com.holaland.holalandadmin.entity.Role;
 import com.holaland.holalandadmin.entity.User;
+import com.holaland.holalandadmin.entity.UserRole;
 import com.holaland.holalandadmin.repository.RoleRepository;
 import com.holaland.holalandadmin.repository.UserRepository;
 import com.holaland.holalandadmin.service.UserService;
@@ -70,4 +71,20 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public boolean delete(int id) throws DataAccessException {
         return userRepository.delete(id);
     }
+
+    @Override
+    public User getOne(int id) throws DataAccessException {
+        return userRepository.getOne(id);
+    }
+
+    @Override
+    public boolean unlock(int id) throws DataAccessException {
+        return userRepository.unlock(id);
+    }
+
+    @Override
+    public boolean lock(int id) throws DataAccessException {
+        return userRepository.lock(id);
+    }
+
 }

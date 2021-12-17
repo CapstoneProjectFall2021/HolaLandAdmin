@@ -1,8 +1,8 @@
 package com.holaland.holalandadmin.service.impl;
 
 import com.holaland.holalandadmin.entity.food.FoodStoreOnline;
-import com.holaland.holalandadmin.repository.FoodStoreOnlineRepository;
-import com.holaland.holalandadmin.service.FoodStoreOnlineService;
+import com.holaland.holalandadmin.repository.food.FoodStoreOnlineRepository;
+import com.holaland.holalandadmin.service.food.FoodStoreOnlineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -30,8 +30,13 @@ public class FoodStoreOnlineServiceImpl implements FoodStoreOnlineService {
     }
 
     @Override
-    public boolean delete(int id) throws DataAccessException {
-        return foodStoreOnlineRepository.delete(id);
+    public boolean lock(int id) throws DataAccessException {
+        return foodStoreOnlineRepository.lock(id);
+    }
+
+    @Override
+    public boolean unlock(int id) throws DataAccessException {
+        return foodStoreOnlineRepository.unlock(id);
     }
 
 }
