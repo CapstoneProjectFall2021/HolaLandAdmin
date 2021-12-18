@@ -26,7 +26,12 @@
         <tbody>
         <tr th:each = "list,stt : ${storeOnlineList}">
           <td class="text-center" th:text="*{stt.index + 1}"></td>
-          <td><span th:text = "*{list.foodStoreOnlineName}"></span></td>
+          <td>
+            <a th:href="@{/food/online-store/seller(userId=*{list.userId})}"
+               th:classappend="${list.userId == userId ? 'active' : ''}">
+              <span th:text = "*{list.foodStoreOnlineName}"></span>
+            </a>
+          </td>
           <td class="text-center">
             <i class="bi bi-calendar3-week me-1"></i><span th:text = "*{list.foodStoreOnlineDescription}"></span>
           </td>
@@ -35,7 +40,7 @@
           <td class="text-center">
             <a th:href="@{/food/online-store/comment(onlineStoreId=*{list.foodStoreOnlineId})}"
                th:classappend="${list.foodStoreOnlineId == onlineStoreId ? 'active' : ''}">
-            <span th:text = "*{list.foodStoreOnlineCountRate}"></span>
+              <span th:text = "*{list.foodStoreOnlineCountRate}"></span>
             </a>
           </td>
           <td class="text-center">

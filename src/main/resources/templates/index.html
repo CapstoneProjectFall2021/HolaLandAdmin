@@ -93,6 +93,8 @@
     <div th:replace="food/modal/modal-show-comment :: showCommentModal"></div>
     <!-- Import modal show report -->
     <div th:replace="food/modal/modal-show-report :: showReportModal"></div>
+    <!-- Import modal show detail seller -->
+    <div th:replace="food/modal/modal-show-detail-seller :: showDetailSellerModal"></div>
   </th:block>
   <th:block th:if="${page == 7}">
     <div th:replace="traffic/modal/modal-show-info-bus :: showBusInfoModal"></div>
@@ -190,6 +192,11 @@
 
   <script th:if="${listReport != null && listReport.size() != 0}">
       const myModal = new bootstrap.Modal(document.getElementById('showReportModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${userDetail != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('showDetailSellerModal'));
       myModal.show();
   </script>
 

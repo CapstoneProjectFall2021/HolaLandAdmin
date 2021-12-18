@@ -1,0 +1,41 @@
+<!-- Modal show detail seller -->
+<div class="modal fade" id="showDetailSellerModal" tabindex="-1" aria-labelledby="showDetailSellerModalLabel"
+     aria-hidden="true" th:fragment="showDetailSellerModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="showDetailSellerModalLabel">Thông tin chủ cửa hàng</h5>
+      </div>
+      <div class="modal-body">
+        <div>
+
+        </div>
+        <table id="show-detail-seller-table" class="table mb-0">
+          <thead>
+          <tr>
+            <th class="text-center">Tên</th>
+            <th class="text-center">Ngày sinh</th>
+            <th class="text-center">Giới tính</th>
+            <th class="text-center">SĐT</th>
+            <th class="text-right">Email</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:with="user=${userDetail}">
+            <td class="text-center"><span th:text="*{user.userDetailName}"></span></td>
+            <td class="text-center"><span th:text="*{#dates.format(user.userDetailDob, 'dd-MM-yyyy')}"></span></td>
+            <td class="text-center">
+              <span th:text = "*{user.userDetailGender}==1?'Nam':'Nữ'"></span>
+            </td>
+            <td class="text-center"><span th:text="*{user.userDetailPhone}"></span></td>
+            <td class="text-right"><span th:text="*{user.userDetailEmail}"></span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

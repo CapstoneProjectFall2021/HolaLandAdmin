@@ -171,6 +171,17 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/food/online-store/seller")
+    public String showSeller(@RequestParam("userId") int userId, Model model) {
+        List<FoodStoreOnline> storeOnlineList = foodStoreOnlineService.getAll();
+        UserDetail userDetail = userDetailService.getOneByUserId(userId);
+
+        model.addAttribute("storeOnlineList", storeOnlineList);
+        model.addAttribute("userDetail", userDetail);
+        model.addAttribute("page", 6);
+        return "index";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";
