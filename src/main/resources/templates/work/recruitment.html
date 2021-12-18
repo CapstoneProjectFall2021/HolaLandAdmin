@@ -30,7 +30,11 @@
               <span th:text="*{user.userDetailName}"></span>
             </th:block>
           </td>
-          <td><span th:text="${format.title(work.workRequestRecruitmentTitle, 25)}"></span></td>
+          <td>
+            <a th:href="@{/work/recruitment/detail(recruitmentId=*{work.workRequestRecruitmentId})}">
+              <span th:text="${format.title(work.workRequestRecruitmentTitle, 25)}"></span>
+            </a>
+          </td>
           <td><span th:text="*{#dates.format(work.workRequestRecruitmentStartDateTime, 'dd-MM-yyyy')}"></span></td>
           <td><span th:text="*{#dates.format(work.workRequestRecruitmentEndDateTime, 'dd-MM-yyyy')}"></span></td>
           <td>
@@ -45,9 +49,6 @@
             </span>
           </td>
           <td class="text-right">
-            <a th:href="@{/work/recruitment/detail(recruitmentId=*{work.workRequestRecruitmentId})}">
-              <i class="fas fa-eye text-info mr-2"></i>
-            </a>
             <th:block th:if="*{work.sttWorkCode == 1}">
               <a href="javascript:void(0)" class="text-success mr-2">
                 <i class="fas fa-check" onclick="confirmApproveRecruitment(event)">
