@@ -24,14 +24,15 @@
         <tbody>
         <tr th:each = "club, stt : ${clubList}">
           <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
-          <td><span th:text="*{club.fptuClubName}"></span></td>
+          <td>
+            <a th:href="@{/club/detail(clubId=*{club.fptuClubId})}">
+              <span th:text="*{club.fptuClubName}"></span>
+            </a>
+          </td>
           <td><span class="span" th:text="*{club.fptuClubContactName}"></span></td>
           <td><span th:text="*{club.fptuClubContactEmail}"></span></td>
           <td><span th:text="*{club.fptuClubContactPhoneNumber}"></span></td>
-          <td>
-            <a th:href="@{/club/detail(clubId=*{club.fptuClubId})}">
-              <i class="fas fa-eye text-info mr-2"></i>
-            </a>
+          <td class="text-right">
             <a href="javascript:void(0)" class="color-danger">
               <i class="far fa-trash-alt" onclick="confirmDeleteClub(event)">
                 <span class="d-none" th:text="*{club.fptuClubId}"></span>
