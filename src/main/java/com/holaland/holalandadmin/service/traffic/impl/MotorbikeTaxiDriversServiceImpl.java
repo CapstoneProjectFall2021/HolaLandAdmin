@@ -25,7 +25,17 @@ public class MotorbikeTaxiDriversServiceImpl implements MotorbikeTaxiDriversServ
     }
 
     @Override
+    public MotorbikeTaxiDrivers getOne(int id) throws DataAccessException {
+        return motorbikeTaxiDriversRepository.getOne(id);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return motorbikeTaxiDriversRepository.delete(id);
+    }
+
+    @Override
+    public boolean update(MotorbikeTaxiDrivers obj) throws DataAccessException {
+        return motorbikeTaxiDriversRepository.update(obj);
     }
 }

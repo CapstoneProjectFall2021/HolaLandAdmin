@@ -38,4 +38,15 @@ public class BusRepositoryImpl implements BusRepository, IRepositoryQuery {
                 id
         ) > 0;
     }
+
+    @Override
+    public boolean update(Bus obj) throws DataAccessException {
+        return jdbcTemplate.update(
+                UPDATE_BUS,
+                obj.getTfBusName(), obj.getTfBusStartTime(),
+                obj.getTfBusEndTime(), obj.getTfBusPrice(),
+                obj.getTfBusInfo(),
+                obj.getTfBusId()
+        ) > 0;
+    }
 }

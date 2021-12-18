@@ -9,5 +9,9 @@ public interface MotorbikeTaxiDriversRepository {
 
     List<MotorbikeTaxiDrivers> getAll() throws DataAccessException;
 
+    MotorbikeTaxiDrivers getOne(int id) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
+
+    boolean update(MotorbikeTaxiDrivers obj) throws DataAccessException;
 }

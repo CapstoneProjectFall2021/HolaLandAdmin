@@ -33,4 +33,9 @@ public class BusServiceImpl implements BusService {
     public boolean delete(int id) throws DataAccessException {
         return busRepository.delete(id);
     }
+
+    @Override
+    public boolean update(Bus obj) throws DataAccessException {
+        return busRepository.update(obj);
+    }
 }

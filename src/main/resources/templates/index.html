@@ -105,6 +105,14 @@
     <div th:replace="traffic/modal/modal-show-bus-stop :: showBusStopModal"></div>
   </th:block>
 
+  <th:block th:if="${page == 7 && currentBus != null}">
+    <div th:replace="traffic/modal/modal-update-bus :: updateBusModal"></div>
+  </th:block>
+
+  <th:block th:if="${page == 8 && currentDriver != null}">
+    <div th:replace="traffic/modal/modal-update-motorbike-taxi-drivers :: updateMotorBikeTaxiDriverModal"></div>
+  </th:block>
+
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -171,6 +179,16 @@
 
   <script th:if="${busStop != null && busStop.size() != 0}">
       const myModal = new bootstrap.Modal(document.getElementById('showBusStopModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${page==7 && currentBus != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('updateBusModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${page==8 && currentDriver != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('updateMotorBikeTaxiDriverModal'));
       myModal.show();
   </script>
 

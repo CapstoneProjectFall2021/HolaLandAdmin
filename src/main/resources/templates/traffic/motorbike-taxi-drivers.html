@@ -28,7 +28,7 @@
         <tr th:each = "motorbike, stt : ${motorbikeTaxiDriversList}">
           <td class="text-center"><span th:text="*{stt.index + 1}"></span></td>
           <td><span th:text="*{motorbike.tfMotorbikeTaxiDriversName}"></span></td>
-          <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversGender ? 'Nam' : 'Nữ'}"></span></td>
+          <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversGender == true ? 'Nam' : 'Nữ'}"></span></td>
           <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversPhone}"></span></td>
           <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversLicensePlates}"></span></td>
           <td class="text-center"><span th:text="*{motorbike.tfMotorbikeTaxiDriversVehicleType}"></span></td>
@@ -42,7 +42,7 @@
             </span>
           </td>
           <td class="text-right">
-            <a href="javascript:void(0)" class="color-success mr-2">
+            <a th:href="@{/motorbike-taxi-drivers/update(driverId=*{motorbike.tfMotorbikeTaxiDriversId})}" class="color-success mr-2">
               <i class="fas fa-pencil-alt fa-fw"></i>
             </a>
             <a href="javascript:void(0)" class="color-danger">

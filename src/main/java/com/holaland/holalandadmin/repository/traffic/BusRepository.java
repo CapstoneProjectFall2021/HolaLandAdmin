@@ -12,4 +12,6 @@ public interface BusRepository {
     Bus getOne(int id) throws DataAccessException;
 
     boolean delete(int id) throws DataAccessException;
+
+    boolean update(Bus obj) throws DataAccessException;
 }

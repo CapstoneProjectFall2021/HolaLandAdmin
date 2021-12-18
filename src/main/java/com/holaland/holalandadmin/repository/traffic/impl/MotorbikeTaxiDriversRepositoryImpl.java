@@ -27,10 +27,30 @@ public class MotorbikeTaxiDriversRepositoryImpl implements MotorbikeTaxiDriversR
     }
 
     @Override
+    public MotorbikeTaxiDrivers getOne(int id) throws DataAccessException {
+        return jdbcTemplate.queryForObject(GET_ONE_DRIVER, new MotorbikeTaxiDriversMapper(), id);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return jdbcTemplate.update(
                 MOTORBIKE_TAXI_DRIVERS_DELETE_ONE,
                 id
+        ) > 0;
+    }
+
+    @Override
+    public boolean update(MotorbikeTaxiDrivers obj) throws DataAccessException {
+        return jdbcTemplate.update(
+                UPDATE_DRIVER,
+                obj.getTfMotorbikeTaxiDriversName(),
+                obj.getTfMotorbikeTaxiDriversStartTime(),
+                obj.getTfMotorbikeTaxiDriversEndTime(),
+                obj.isTfMotorbikeTaxiDriversGender(),
+                obj.getTfMotorbikeTaxiDriversPhone(),
+                obj.getTfMotorbikeTaxiDriversLicensePlates(),
+                obj.getTfMotorbikeTaxiDriversVehicleType(),
+                obj.getTfMotorbikeTaxiDriversId()
         ) > 0;
     }
 }
