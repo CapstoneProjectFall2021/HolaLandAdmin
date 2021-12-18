@@ -91,7 +91,16 @@ public interface IRepositoryQuery {
             "SET user_status_id = 2\n" +
             "WHERE user_id = ?;";
 
-    String USER_GET_ROLE = "SELECT * FROM user_role WHERE user_id = ? LIMIT 1";
+    String USER_GET_ROLE = "SELECT * FROM user_role WHERE user_id = ?";
+
+    String GET_ROLE_BY_USER_ID = "SELECT T3.role_id, T3.role_name\n" +
+            "FROM user T1\n" +
+            "LEFT OUTER JOIN user_role T2\n" +
+            "    ON T1.user_id = T2.user_id\n" +
+            "LEFT OUTER JOIN role T3\n" +
+            "    ON T3.role_id = T2.role_id\n" +
+            "WHERE T1.user_id = ?\n" +
+            "AND T1.user_deleted = 0";
 
     String FOOD_STORE_ONLINE_GET_ALL = "SELECT * FROM food_store_online";
     String FOOD_STORE_ONLINE_GET_ONE = "SELECT * FROM food_store_online WHERE food_store_online_id = ?";

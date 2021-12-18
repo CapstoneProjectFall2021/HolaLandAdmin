@@ -31,12 +31,12 @@ function confirmUnlockUser(e) {
  */
 function confirmLockOnlineStore(e) {
     const onlineStoreId = e.target.firstElementChild.innerHTML;
-    document.getElementById("btn-lock-online-store").href = "online-store/lock?onlineStoreId=" + onlineStoreId;
+    document.getElementById("btn-lock-online-store").href = "/food/online-store/lock?onlineStoreId=" + onlineStoreId;
     openModal("confirmLockOnlineStoreModal");
 }
 
 function confirmUnlockOnlineStore(e) {
     const onlineStoreId = e.target.firstElementChild.innerHTML;
-    document.getElementById("btn-unlock-online-store").href = "online-store/unlock?onlineStoreId=" + onlineStoreId;
+    document.getElementById("btn-unlock-online-store").href = "/food/online-store/unlock?onlineStoreId=" + onlineStoreId;
     openModal("confirmUnlockOnlineStoreModal");
 }

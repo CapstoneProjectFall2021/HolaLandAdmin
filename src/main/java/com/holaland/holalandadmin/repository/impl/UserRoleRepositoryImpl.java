@@ -9,6 +9,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserRoleRepositoryImpl implements UserRoleRepository, IRepositoryQuery {
 
@@ -20,7 +22,7 @@ public class UserRoleRepositoryImpl implements UserRoleRepository, IRepositoryQu
     }
 
     @Override
-    public UserRole getRole(int id) throws DataAccessException {
-        return jdbcTemplate.queryForObject(USER_GET_ROLE, new UserRoleMapper(), id);
+    public List<UserRole> getRole(int id) throws DataAccessException {
+        return jdbcTemplate.query(USER_GET_ROLE, new UserRoleMapper(), id);
     }
 }

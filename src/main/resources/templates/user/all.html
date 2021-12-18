@@ -28,12 +28,9 @@
           <td class="text-center" th:text="*{stt.index + 1}"></td>
           <td><span th:text = "*{info.userDetailEmail}"></span></td>
           <td><span th:text = "*{info.userDetailName}"></span></td>
-          <td th:with="role=${userRoleService.getRole(info.userId)}">
-            <th:block>
-              <span th:text = "*{role.roleId == 1 ? 'Thành viên' :
-                    (role.roleId == 2 ? 'Nhà tuyển dụng' :
-                    (role.roleId == 3 ? 'Bán hàng' : 'Khác'))}">
-              </span>
+          <td>
+            <th:block th:with="role=${userRoleService.getRoleByUserId(info.userId)}">
+              <span th:text = "${format.roleCovert(role)}"></span>
             </th:block>
           </td>
           <td class="text-center">
@@ -43,7 +40,7 @@
           <td class="text-secondary text-right"><span th:text = "*{info.userDetailPhone}"></span></td>
           <td class="text-right" th:with="sttAccount=${userService.getOne(info.userId)}">
             <th:block th:if = "*{sttAccount.userStatusId == 1}">
-              <a href="javascript:void(0)" class="text-warning me-6">
+              <a href="javascript:void(0)" class="text-warning mr-2">
                 <i class="fas fa-lock" data-bs-placement="top" data-bs-toggle="tooltip"
                    title="Khóa tài khoản" onclick="confirmLockUser(event)">
                   <span class="d-none" th:text="${info.userId}"></span>
@@ -52,7 +49,7 @@
               </a>
             </th:block>
             <th:block th:if = "*{sttAccount.userStatusId == 2}">
-              <a href="javascript:void(0)" class="text-primary me-6">
+              <a href="javascript:void(0)" class="text-primary mr-2">
                 <i class="fas fa-lock-open" data-bs-placement="top" data-bs-toggle="tooltip"
                    title="Mở Khóa tài khoản" onclick="confirmUnlockUser(event)">
                   <span class="d-none" th:text="${info.userId}"></span>

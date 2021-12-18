@@ -11,6 +11,7 @@ import com.holaland.holalandadmin.service.food.FoodStoreOnlineService;
 import com.holaland.holalandadmin.service.UserDetailService;
 import com.holaland.holalandadmin.service.UserRoleService;
 import com.holaland.holalandadmin.service.UserService;
+import com.holaland.holalandadmin.util.Format;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -73,6 +74,7 @@ public class MainController {
         model.addAttribute("status", status);
         model.addAttribute("userService", userService);
         model.addAttribute("userRoleService", userRoleService);
+        model.addAttribute("format", new Format());
         model.addAttribute("page", 2);
         return "index";
     }
