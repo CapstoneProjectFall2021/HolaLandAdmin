@@ -117,4 +117,50 @@ public interface IRepositoryQuery {
 
     String FOOD_REPORT_GET_ALL_BY_STORE_ONLINE_ID = "SELECT * FROM food_report WHERE food_store_online_id = ?";
 
+    String COUNT_ALL_DASHBOARD = "SELECT count_userAcc, count_studentAcc, count_recruitmentAcc, count_sellerAcc,\n" +
+            "       count_post_recruitment, count_post_find_job,\n" +
+            "       count_store, count_order, total_price,\n" +
+            "       sum_sold_items\n" +
+            "FROM\n" +
+            "     (SELECT COUNT(user_id) count_userAcc\n" +
+            "         FROM user\n" +
+            "         WHERE user_deleted = 0) A0,\n" +
+            "    (SELECT T1.count_studentAcc, T2.count_recruitmentAcc, T3.count_sellerAcc\n" +
+            "        FROM\n" +
+            "            (SELECT COUNT(role_id) count_studentAcc, user_id\n" +
+            "                FROM user_role\n" +
+            "                WHERE role_id = 1) T1\n" +
+            "            LEFT OUTER JOIN (SELECT COUNT(role_id) count_recruitmentAcc, user_id\n" +
+            "                FROM user_role\n" +
+            "                WHERE role_id = 2) T2\n" +
+            "            ON T1.user_id != T2.user_id OR T1.user_id = T2.user_id\n" +
+            "            LEFT OUTER JOIN (SELECT COUNT(role_id) count_sellerAcc, user_id\n" +
+            "                FROM user_role\n" +
+            "                WHERE role_id = 3) T3\n" +
+            "            ON T1.user_id != T3.user_id OR T1.user_id = T3.user_id) A1,\n" +
+            "    (SELECT T1.count_post_recruitment, T2.count_post_find_job\n" +
+            "        FROM\n" +
+            "            (SELECT COUNT(work_request_recruitment_id) count_post_recruitment, stt_work_code\n" +
+            "                FROM work_request_recruitment\n" +
+            "                WHERE stt_work_code in(3,4,5)) T1\n" +
+            "            LEFT OUTER JOIN (SELECT COUNT(work_request_find_job_id) count_post_find_job, stt_work_code\n" +
+            "                FROM work_request_find_job\n" +
+            "                WHERE stt_work_code in(3,4,5)) T2\n" +
+            "            ON T1.stt_work_code != T2.stt_work_code OR T1.stt_work_code = T2.stt_work_code) A2,\n" +
+            "    (SELECT T1.count_order, T2.total_price\n" +
+            "        FROM\n" +
+            "            (SELECT COUNT(food_order_id) count_order, stt_food_code\n" +
+            "                FROM food_order\n" +
+            "                WHERE stt_food_code = 4) T1\n" +
+            "            LEFT OUTER JOIN (SELECT SUM(food_order_total_price) total_price, stt_food_code\n" +
+            "                FROM food_order\n" +
+            "                WHERE stt_food_code = 4) T2\n" +
+            "            ON T1.stt_food_code = T2.stt_food_code) A3,\n" +
+            "    (SELECT SUM(T1.food_item_quantity) sum_sold_items\n" +
+            "        FROM food_order_detail T1\n" +
+            "        LEFT OUTER JOIN food_order T2\n" +
+            "        ON T1.food_order_id = T2.food_order_id\n" +
+            "        WHERE T2.stt_food_code = 4) A4,\n" +
+            "     (SELECT COUNT(food_store_online_id) count_store\n" +
+            "         FROM food_store_online) A5";
 }

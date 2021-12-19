@@ -5,6 +5,7 @@ import com.holaland.holalandadmin.entity.food.FoodReport;
 import com.holaland.holalandadmin.entity.food.FoodStoreOnline;
 import com.holaland.holalandadmin.entity.food.FoodStoreOnlineRate;
 import com.holaland.holalandadmin.repository.UserRepository;
+import com.holaland.holalandadmin.service.CountAllDashboardService;
 import com.holaland.holalandadmin.service.food.FoodReportService;
 import com.holaland.holalandadmin.service.food.FoodStoreOnlineRateService;
 import com.holaland.holalandadmin.service.food.FoodStoreOnlineService;
@@ -12,6 +13,7 @@ import com.holaland.holalandadmin.service.UserDetailService;
 import com.holaland.holalandadmin.service.UserRoleService;
 import com.holaland.holalandadmin.service.UserService;
 import com.holaland.holalandadmin.util.Format;
+import com.holaland.holalandadmin.view.CountAllDashboard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,6 +37,7 @@ public class MainController {
     private final UserRoleService userRoleService;
     private final FoodReportService foodReportService;
     private final FoodStoreOnlineRateService foodStoreOnlineRateService;
+    private final CountAllDashboardService countAllDashboardService;
 
     @Autowired
     public MainController(
@@ -44,7 +47,8 @@ public class MainController {
             UserService userService,
             UserRoleService userRoleService,
             FoodReportService foodReportService,
-            FoodStoreOnlineRateService foodStoreOnlineRateService
+            FoodStoreOnlineRateService foodStoreOnlineRateService,
+            CountAllDashboardService countAllDashboardService
     ){
         this.userRepository = userRepository;
         this.userDetailService = userDetailService;
@@ -53,10 +57,14 @@ public class MainController {
         this.userRoleService = userRoleService;
         this.foodReportService = foodReportService;
         this.foodStoreOnlineRateService = foodStoreOnlineRateService;
+        this.countAllDashboardService = countAllDashboardService;
     }
 
     @GetMapping("/")
     public String index(Model model) {
+        CountAllDashboard count = countAllDashboardService.count();
+
+        model.addAttribute("count", count);
         model.addAttribute("page", 1);
         return "index";
     }

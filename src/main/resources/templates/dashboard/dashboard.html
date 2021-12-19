@@ -13,24 +13,11 @@
       <div class="card">
         <div class="row">
           <div class="col-3">
-            <i class="fas fa-th-large fa-3x"></i>
+            <i class="fas fa-users fa-3x"></i>
           </div>
           <div class="col-9 text-right">
-            <div class="huge">4</div>
-            <div class="sub-text">Total class in semester</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="card">
-        <div class="row">
-          <div class="col-3">
-            <i class="fas fa-th-large fa-3x"></i>
-          </div>
-          <div class="col-9 text-right">
-            <div class="huge">13</div>
-            <div class="sub-text">Total class</div>
+            <div class="huge"><span th:text="${count.countUserAcc}"></span></div>
+            <div class="sub-text">Số lượng tài khoản</div>
           </div>
         </div>
       </div>
@@ -42,8 +29,8 @@
             <i class="fas fa-user-graduate fa-3x"></i>
           </div>
           <div class="col-9 text-right">
-            <div class="huge">63</div>
-            <div class="sub-text">Total student in semester</div>
+            <div class="huge"><span th:text="${count.countStudentAcc}"></span></div>
+            <div class="sub-text">Học sinh</div>
           </div>
         </div>
       </div>
@@ -52,11 +39,102 @@
       <div class="card">
         <div class="row">
           <div class="col-3">
-            <i class="fas fa-user-friends fa-3x"></i>
+            <i class="fas fa-user-tie fa-3x"></i>
           </div>
           <div class="col-9 text-right">
-            <div class="huge">6</div>
-            <div class="sub-text">Total mentor</div>
+            <div class="huge"><span th:text="${count.countRecruitmentAcc}"></span></div>
+            <div class="sub-text">Người tuyển dụng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-user-tie fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${count.countSellerAcc}"></span></div>
+            <div class="sub-text">Người bán hàng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-address-card fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${count.countPostRecruitment}"></span></div>
+            <div class="sub-text">Số bài tuyển dụng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-address-card fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${count.countPostFindJob}"></span></div>
+            <div class="sub-text">Số bài tìm việc</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-store fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${count.countStore}"></span></div>
+            <div class="sub-text">Số cửa hàng online</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-receipt fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${count.countOrder}"></span></div>
+            <div class="sub-text">Số đơn hàng order hoàn thành</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-dollar-sign fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${#numbers.formatInteger(count.totalPrice, 3, 'POINT')}"></span><sup>đ</sup></div>
+            <div class="sub-text">Tổng số tiền giao dịch trên hệ thống</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-3">
+            <i class="fas fa-pizza-slice fa-3x"></i>
+          </div>
+          <div class="col-9 text-right">
+            <div class="huge"><span th:text="${count.sumSoldItems}"></span></div>
+            <div class="sub-text">Tổng số mặt hàng đã bán</div>
           </div>
         </div>
       </div>

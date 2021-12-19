@@ -13,6 +13,7 @@ import java.util.List;
 
 @Repository
 public class FoodReportRepositoryImpl implements FoodReportRepository, IRepositoryQuery {
+
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
