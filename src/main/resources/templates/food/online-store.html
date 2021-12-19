@@ -16,11 +16,11 @@
           <th class="text-center">#</th>
           <th>Tên cửa hàng<i class="fas fa-sort fa-size"></i></th>
           <th class="text-center">Giới thiệu<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-center">Đánh giá<i class="fas fa-sort fa-size"></i></th>
-          <th class="text-right">Số món ăn</th>
-          <th class="text-right">Số bình luận</th>
-          <th class="text-right">Số báo cáo</th>
-          <th class="text-right">Thêm<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-center">Điểm đánh giá<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Số món ăn<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Số bình luận<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Số báo cáo<i class="fas fa-sort fa-size"></i></th>
+          <th class="text-right">Thêm</th>
         </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
               <span th:text = "*{list.foodStoreOnlineName}"></span>
             </a>
           </td>
-          <td class="text-center">
+          <td>
             <i class="bi bi-calendar3-week me-1"></i><span th:text = "*{list.foodStoreOnlineDescription}"></span>
           </td>
           <td class="text-center"><span th:text="${#numbers.formatDecimal(list.foodStoreOnlineRate, 1, 1, 'POINT')}"></span></td>

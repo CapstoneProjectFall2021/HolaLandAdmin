@@ -16,7 +16,7 @@
             </fieldset>
           </div>
           <div class="form-row">
-            <div class="form-row col-md-2">
+            <div class="form-group col-md-2">
               <fieldset>
                 <label>Thời gian chạy</label>
                 <input type="text" class="form-control" id="startTime" th:field="${currentBus.tfBusStartTime}">
@@ -28,7 +28,7 @@
                 <input type="text" class="form-control" id="endTime" th:field="${currentBus.tfBusEndTime}">
               </fieldset>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
               <fieldset>
                 <label>Giá</label>
                 <input type="text" class="form-control" id="price" th:field="${currentBus.tfBusPrice}" placeholder="VND">
@@ -52,7 +52,7 @@
       <div class="modal-footer">
         <a href="javascript:void(0)" class="btn btn-sm btn-secondary"
            onclick="document.getElementById('updateBus').submit();">
-          <i class="fas fa-check text-success"></i>Xác nhận
+          <i class="fas fa-check text-success mr-2"></i>Xác nhận
         </a>
         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Đóng</button>
       </div>
