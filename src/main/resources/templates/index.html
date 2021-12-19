@@ -75,14 +75,14 @@
   <th:block th:if="${page == 3 && currentClub != null}">
     <div th:replace="fptu/modal/modal-show-club-detail :: showClubDetailModal"></div>
   </th:block>
+  <th:block th:if="${page == 4 || page == 5}">
+    <div th:replace="work/modal/modal-confirm-approve :: confirmApproveModal"></div>
+  </th:block>
   <th:block th:if="${page == 4 && workRecruitment != null}">
     <div th:replace="work/modal/modal-show-detail-recruitment :: showDetailRecruitmentModal"></div>
   </th:block>
   <th:block th:if="${page == 5 && workFindJob != null}">
     <div th:replace="work/modal/modal-show-detail-find-job :: showDetailFindJobModal"></div>
-  </th:block>
-  <th:block th:if="${page == 4 || page == 5}">
-    <div th:replace="work/modal/modal-confirm-approve :: confirmApproveModal"></div>
   </th:block>
   <th:block th:if="${page == 6}">
     <!-- Import modal confirm lock online store -->
