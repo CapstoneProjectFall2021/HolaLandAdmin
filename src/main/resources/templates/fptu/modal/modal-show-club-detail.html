@@ -34,13 +34,13 @@
               <h2 class="sub-title-small">Thông tin CLB</h2>
               <div class="contact">
                 <div class="row-info">
-                  <div><i class="fas fa-user fa-fw"></i>Số lượng thành viên</div>
+                  <div><i class="fas fa-user fa-fw mr-2"></i>Số lượng thành viên</div>
                   <div>
-                    <span th:text="${currentClub.fptuClubMemberQuantity}"></span>
+                    <span th:text="${currentClub.fptuClubMemberQuantity}"></span> người
                   </div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fas fa-bookmark fa-fw"></i>Loại câu lạc bộ</div>
+                  <div><i class="fas fa-bookmark fa-fw mr-2"></i>Loại câu lạc bộ</div>
                   <div>
                     <th:block th:with="clubType=${clubTypeService.getOne(currentClub.fptuClubTypeId)}">
                       <span th:text="${clubType.fptuClubTypeName}"></span>
@@ -48,13 +48,13 @@
                   </div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fab fa-facebook-square fa-fw"></i>Tên fanpage</div>
+                  <div><i class="fab fa-facebook-square fa-fw mr-2"></i>Tên fanpage</div>
                   <div>
                     <span th:text="${currentClub.fptuClubFanpageName}"></span>
                   </div>
                 </div>
                 <div class="row-info">
-                  <div><i class="fa fa-globe fa-fw"></i>Fanpage</div>
+                  <div><i class="fa fa-globe fa-fw mr-2"></i>Fanpage</div>
                   <div>
                     <span th:text="${currentClub.fptuClubFanpage}"></span>
                   </div>
