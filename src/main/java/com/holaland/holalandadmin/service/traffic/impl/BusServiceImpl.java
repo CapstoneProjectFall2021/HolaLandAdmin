@@ -38,4 +38,9 @@ public class BusServiceImpl implements BusService {
     public boolean update(Bus obj) throws DataAccessException {
         return busRepository.update(obj);
     }
+
+    @Override
+    public boolean add(Bus obj) throws DataAccessException {
+        return busRepository.add(obj);
+    }
 }

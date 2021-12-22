@@ -38,4 +38,9 @@ public class MotorbikeTaxiDriversServiceImpl implements MotorbikeTaxiDriversServ
     public boolean update(MotorbikeTaxiDrivers obj) throws DataAccessException {
         return motorbikeTaxiDriversRepository.update(obj);
     }
+
+    @Override
+    public boolean add(MotorbikeTaxiDrivers obj) throws DataAccessException {
+        return motorbikeTaxiDriversRepository.add(obj);
+    }
 }

@@ -33,6 +33,9 @@ public class TrafficController {
     @GetMapping("/bus")
     public String bus(Model model) {
         List<Bus> busList = busService.getAll();
+        Bus addBus = Bus.builder().build();
+
+        model.addAttribute("addBus", addBus);
         model.addAttribute("busList",busList);
         model.addAttribute("page", 7);
         return "index";
@@ -42,6 +45,9 @@ public class TrafficController {
     public String busStop(@RequestParam("busId") int busId, Model model) {
         List<Bus> busList = busService.getAll();
         List<String> busStop = busService.getOne(busId).getTfBusStops();
+        Bus addBus = Bus.builder().build();
+
+        model.addAttribute("addBus", addBus);
         model.addAttribute("busList",busList);
         model.addAttribute("busStop",busStop);
         model.addAttribute("page", 7);
@@ -59,7 +65,9 @@ public class TrafficController {
         List<Bus> busList = busService.getAll();
         Bus currentBus = busService.getOne(busId);
         Bus updateBus = Bus.builder().build();
+        Bus addBus = Bus.builder().build();
 
+        model.addAttribute("addBus", addBus);
         model.addAttribute("busList",busList);
         model.addAttribute("currentBus", currentBus);
         model.addAttribute("updateBus", updateBus);
@@ -82,9 +90,27 @@ public class TrafficController {
         }
     }
 
+    @PostMapping("/bus/add")
+    public String addNewBus(@ModelAttribute("addBus") Bus obj, BindingResult result) {
+        if (result.hasErrors()){
+            System.out.println("There was a error " + result);
+            return null;
+        }
+
+        boolean isCheck = busService.add(obj);
+        if (isCheck) {
+            return "redirect:" + "/bus";
+        } else {
+            return null;
+        }
+    }
+
     @GetMapping("/motorbike-taxi-drivers")
     public String motorbikeTaxiDrivers(Model model) {
         List<MotorbikeTaxiDrivers> motorbikeTaxiDriversList = motorbikeTaxiDriversService.getAll();
+        MotorbikeTaxiDrivers addDriver = MotorbikeTaxiDrivers.builder().build();
+
+        model.addAttribute("addDriver", addDriver);
         model.addAttribute("motorbikeTaxiDriversList",motorbikeTaxiDriversList);
         model.addAttribute("page", 8);
         return "index";
@@ -101,7 +127,9 @@ public class TrafficController {
         List<MotorbikeTaxiDrivers> motorbikeTaxiDriversList = motorbikeTaxiDriversService.getAll();
         MotorbikeTaxiDrivers currentDriver = motorbikeTaxiDriversService.getOne(driverId);
         MotorbikeTaxiDrivers updateDriver = MotorbikeTaxiDrivers.builder().build();
+        MotorbikeTaxiDrivers addDriver = MotorbikeTaxiDrivers.builder().build();
 
+        model.addAttribute("addDriver", addDriver);
         model.addAttribute("motorbikeTaxiDriversList",motorbikeTaxiDriversList);
         model.addAttribute("currentDriver", currentDriver);
         model.addAttribute("updateDriver", updateDriver);
@@ -117,6 +145,21 @@ public class TrafficController {
         }
 
         boolean isCheck = motorbikeTaxiDriversService.update(obj);
+        if (isCheck) {
+            return "redirect:" + "/motorbike-taxi-drivers";
+        } else {
+            return null;
+        }
+    }
+
+    @PostMapping("/motorbike-taxi-drivers/add")
+    public String addDriver(@ModelAttribute("addDriver") MotorbikeTaxiDrivers obj, BindingResult result) {
+        if (result.hasErrors()){
+            System.out.println("There was a error " + result);
+            return null;
+        }
+
+        boolean isCheck = motorbikeTaxiDriversService.add(obj);
         if (isCheck) {
             return "redirect:" + "/motorbike-taxi-drivers";
         } else {

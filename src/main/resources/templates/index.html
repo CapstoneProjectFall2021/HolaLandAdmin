@@ -104,13 +104,18 @@
     <div th:replace="traffic/modal/modal-show-info-bus :: showBusInfoModal"></div>
     <div th:replace="traffic/modal/modal-show-bus-stop :: showBusStopModal"></div>
   </th:block>
-
   <th:block th:if="${page == 7 && currentBus != null}">
     <div th:replace="traffic/modal/modal-update-bus :: updateBusModal"></div>
+  </th:block>
+  <th:block th:if="${page == 7}">
+    <div th:replace="traffic/modal/modal-add-new-bus :: addNewBusModal"></div>
   </th:block>
 
   <th:block th:if="${page == 8 && currentDriver != null}">
     <div th:replace="traffic/modal/modal-update-motorbike-taxi-drivers :: updateMotorBikeTaxiDriverModal"></div>
+  </th:block>
+  <th:block th:if="${page == 8}">
+    <div th:replace="traffic/modal/modal-add-new-driver :: addNewDriverModal"></div>
   </th:block>
 
   <!-- Scroll to Top Button-->

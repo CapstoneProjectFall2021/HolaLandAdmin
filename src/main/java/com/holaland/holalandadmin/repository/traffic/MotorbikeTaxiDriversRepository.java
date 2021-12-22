@@ -14,4 +14,6 @@ public interface MotorbikeTaxiDriversRepository {
     boolean delete(int id) throws DataAccessException;
 
     boolean update(MotorbikeTaxiDrivers obj) throws DataAccessException;
+
+    Boolean add(MotorbikeTaxiDrivers obj) throws DataAccessException;
 }

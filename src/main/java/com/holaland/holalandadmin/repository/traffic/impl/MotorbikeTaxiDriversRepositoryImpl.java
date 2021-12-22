@@ -53,4 +53,15 @@ public class MotorbikeTaxiDriversRepositoryImpl implements MotorbikeTaxiDriversR
                 obj.getTfMotorbikeTaxiDriversId()
         ) > 0;
     }
+
+    @Override
+    public Boolean add(MotorbikeTaxiDrivers obj) throws DataAccessException {
+        return jdbcTemplate.update(
+                ADD_NEW_DRIVER,
+                obj.getTfMotorbikeTaxiDriversName(), obj.isTfMotorbikeTaxiDriversGender(),
+                obj.getTfMotorbikeTaxiDriversPhone(), obj.getTfMotorbikeTaxiDriversLicensePlates(),
+                obj.getTfMotorbikeTaxiDriversVehicleType(), obj.getTfMotorbikeTaxiDriversStartTime(),
+                obj.getTfMotorbikeTaxiDriversEndTime()
+        ) > 0;
+    }
 }

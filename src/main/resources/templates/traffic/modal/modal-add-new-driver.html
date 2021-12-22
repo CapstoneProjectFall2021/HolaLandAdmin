@@ -1,0 +1,60 @@
+<div class="modal fade" id="addNewDriverModal" tabindex="-1" aria-labelledby="addNewDriverModalLabel"
+     aria-hidden="true" th:fragment="addNewDriverModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewDriverModalLabel">Thêm xe ôm</h5>
+      </div>
+      <div class="modal-body">
+        <form id="addDriver" method="post" th:object="${addDriver}" th:action="@{/motorbike-taxi-drivers/add}">
+          <div class="form-group">
+              <label>Tên</label>
+              <input type="text" class="form-control" name="tfMotorbikeTaxiDriversName">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+                <label>Thời gian chạy</label>
+                <input type="text" class="form-control" name="tfMotorbikeTaxiDriversStartTime">
+            </div>
+            <div class="form-group col-md-2">
+                <label>Thời gian nghỉ</label>
+                <input type="text" class="form-control" name="tfMotorbikeTaxiDriversEndTime">
+            </div>
+            <div class="form-group col-md-3">
+              <fieldset>
+                <label>Giới tính</label>
+              </fieldset>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tfMotorbikeTaxiDriversGender" id="boy" value="1">
+                <label class="form-check-label" for="boy">Nam</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tfMotorbikeTaxiDriversGender" id="girl" value="0">
+                <label class="form-check-label" for="girl">Nữ</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>SĐT</label>
+              <input type="text" class="form-control" name="tfMotorbikeTaxiDriversPhone">
+          </div>
+          <div class="form-group">
+              <label>Biển Số Xe</label>
+              <input type="text" class="form-control" name="tfMotorbikeTaxiDriversLicensePlates">
+          </div>
+          <div class="form-group">
+              <label>Loại xe</label>
+              <input type="text" class="form-control" name="tfMotorbikeTaxiDriversVehicleType">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="btn btn-sm btn-secondary"
+           onclick="document.getElementById('addDriver').submit();">
+          <i class="fas fa-check text-success mr-2"></i>Xác nhận
+        </a>
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

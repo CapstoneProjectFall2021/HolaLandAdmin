@@ -1,0 +1,47 @@
+<div class="modal fade" id="addNewBusModal" tabindex="-1" aria-labelledby="addNewBusModalLabel"
+     aria-hidden="true" th:fragment="addNewBusModal">
+  <div class="modal-dialog modal-description">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewBusModalLabel">Thêm Bus</h5>
+      </div>
+      <div class="modal-body">
+        <form id="addNewBus" method="post" th:object="${addBus}" th:action="@{/bus/add}">
+          <div class="form-group">
+              <label>Số xe</label>
+              <input type="text" class="form-control" name="tfBusName">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+                <label>Thời gian chạy</label>
+                <input type="text" class="form-control" name="tfBusStartTime">
+            </div>
+            <div class="form-group col-md-2">
+                <label>Thời gian nghỉ</label>
+                <input type="text" class="form-control" name="tfBusEndTime">
+            </div>
+            <div class="form-group col-md-2">
+                <label>Giá</label>
+                <input type="text" class="form-control" name="tfBusPrice" placeholder="VND">
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Thông tin</label>
+              <input type="text" class="form-control" name="tfBusInfo">
+          </div>
+<!--          <div class="form-group">-->
+<!--              <label>Điểm dừng</label>-->
+<!--              <textarea type="text" class="form-control" name="tfBusStops"></textarea>-->
+<!--          </div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="btn btn-sm btn-secondary"
+           onclick="document.getElementById('addNewBus').submit();">
+          <i class="fas fa-check text-success mr-2"></i>Xác nhận
+        </a>
+        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

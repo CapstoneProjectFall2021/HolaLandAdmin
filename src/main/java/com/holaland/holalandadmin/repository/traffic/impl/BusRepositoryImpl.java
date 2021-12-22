@@ -49,4 +49,14 @@ public class BusRepositoryImpl implements BusRepository, IRepositoryQuery {
                 obj.getTfBusId()
         ) > 0;
     }
+
+    @Override
+    public boolean add(Bus obj) throws DataAccessException {
+        return jdbcTemplate.update(
+                ADD_NEW_BUS,
+                obj.getTfBusName(), obj.getTfBusStartTime(),
+                obj.getTfBusEndTime(), obj.getTfBusInfo(),
+                obj.getTfBusPrice()
+        ) > 0;
+    }
 }
