@@ -31,7 +31,7 @@ public class Format {
         String userRole="";
         for (Role role : roles) {
             userRole += (role.getRoleId() == 1 ? "Thành viên" : (role.getRoleId() == 2 ? "Nhà tuyển dụng"
-                    : (role.getRoleId() == 3 ? "Bán hàng" : "Khác")))
+                    : (role.getRoleId() == 3 ? "Bán hàng" : "Học sinh")))
                     + ((roles.indexOf(role) == (roles.size()-1)) ? "" : ", ");
         }
         return userRole;
