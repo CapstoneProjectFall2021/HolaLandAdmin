@@ -13,5 +13,7 @@ public interface WorkRequestRecruitmentRepository {
 
     boolean requestRecruitmentApprove(int id) throws DataAccessException;
 
+    boolean cancel(WorkRequestRecruitment obj) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
 }

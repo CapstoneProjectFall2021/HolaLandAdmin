@@ -34,4 +34,14 @@ public interface IRepositoryQuery {
     String WORK_SALARY_UNIT_GET_ONE = "SELECT * FROM work_salary_unit WHERE work_salary_unit_id = ?";
 
     String WORK_TIME_GET_ONE = "SELECT * FROM work_time WHERE work_time_id = ? AND work_time_deleted = 0";
+
+    String CANCEL_FIND_JOB = "UPDATE work_request_find_job\n" +
+            "SET stt_work_code = 2,\n" +
+            "    work_request_find_job_note = ?\n" +
+            "WHERE work_request_find_job_id =?";
+
+    String CANCEL_RECRUITMENT = "UPDATE work_request_recruitment\n" +
+            "SET stt_work_code = 2,\n" +
+            "    work_request_recruitment_note = ?\n" +
+            "WHERE work_request_recruitment_id = ?";
 }

@@ -13,5 +13,7 @@ public interface WorkRequestFindJobRepository {
 
     boolean requestFindJobApprove(int id) throws DataAccessException;
 
+    boolean cancel(WorkRequestFindJob obj) throws DataAccessException;
+
     boolean delete(int id) throws DataAccessException;
 }

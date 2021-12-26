@@ -1,5 +1,6 @@
 package com.holaland.holalandadmin.controller;
 
+import com.holaland.holalandadmin.entity.traffic.Bus;
 import com.holaland.holalandadmin.entity.work.WorkRequestFindJob;
 import com.holaland.holalandadmin.entity.work.WorkRequestRecruitment;
 import com.holaland.holalandadmin.service.UserDetailService;
@@ -7,7 +8,10 @@ import com.holaland.holalandadmin.service.work.*;
 import com.holaland.holalandadmin.util.Format;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -72,6 +76,36 @@ public class WorkController {
         return "redirect:" + "/work/recruitment";
     }
 
+    @GetMapping("/work/recruitment/cancel")
+    public String getFormCancelRecruitment(@RequestParam("recruitmentId") int recruitmentId, Model model) {
+        List<WorkRequestRecruitment> workList = workRequestRecruitmentService.getAll();
+        WorkRequestRecruitment recruitmentPost = workRequestRecruitmentService.getOne(recruitmentId);
+        WorkRequestRecruitment cancelRequest = WorkRequestRecruitment.builder().build();
+
+        model.addAttribute("workList", workList);
+        model.addAttribute("recruitmentPost", recruitmentPost);
+        model.addAttribute("cancelRequest", cancelRequest);
+        model.addAttribute("userDetailService",userDetailService);
+        model.addAttribute("format", new Format());
+        model.addAttribute("page", 4);
+        return "index";
+    }
+
+    @PostMapping("/work/recruitment/cancel")
+    public String cancelRecruitment(@ModelAttribute("cancelRequest") WorkRequestRecruitment obj, BindingResult result) {
+        if (result.hasErrors()){
+            System.out.println("There was a error " + result);
+            return null;
+        }
+
+        boolean isCheck = workRequestRecruitmentService.cancel(obj);
+        if (isCheck) {
+            return "redirect:" + "/work/recruitment";
+        } else {
+            return null;
+        }
+    }
+
     @GetMapping("/work/recruitment/delete")
     public String deleteRecruitment(@RequestParam("recruitmentId") int recruitmentId) {
         boolean isCheck = workRequestRecruitmentService.delete(recruitmentId);
@@ -108,6 +142,36 @@ public class WorkController {
     public String approveRequestFindJob(@RequestParam("findJobId") int findJobId) {
         boolean isCheck = workRequestFindJobService.requestFindJobApprove(findJobId);
         return "redirect:" + "/work/find-job";
+    }
+
+    @GetMapping("/work/find-job/cancel")
+    public String getFormCancelFindJob(@RequestParam("findJobId") int findJobId, Model model) {
+        List<WorkRequestFindJob> workerList = workRequestFindJobService.getAll();
+        WorkRequestFindJob findJobPost = workRequestFindJobService.getOne(findJobId);
+        WorkRequestFindJob cancelRequest = WorkRequestFindJob.builder().build();
+
+        model.addAttribute("workerList", workerList);
+        model.addAttribute("findJobPost", findJobPost);
+        model.addAttribute("cancelRequest", cancelRequest);
+        model.addAttribute("userDetailService",userDetailService);
+        model.addAttribute("format", new Format());
+        model.addAttribute("page", 5);
+        return "index";
+    }
+
+    @PostMapping("/work/find-job/cancel")
+    public String cancelFindJob(@ModelAttribute("cancelRequest") WorkRequestFindJob obj, BindingResult result) {
+        if (result.hasErrors()){
+            System.out.println("There was a error " + result);
+            return null;
+        }
+
+        boolean isCheck = workRequestFindJobService.cancel(obj);
+        if (isCheck) {
+            return "redirect:" + "/work/find-job";
+        } else {
+            return null;
+        }
     }
 
     @GetMapping("/work/find-job/delete")

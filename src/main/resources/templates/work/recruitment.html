@@ -55,6 +55,9 @@
                   <span class="d-none" th:text="*{work.workRequestRecruitmentId}"></span>
                 </i>
               </a>
+              <a th:href="@{/work/recruitment/cancel(recruitmentId=*{work.workRequestRecruitmentId})}" class="color-danger mr-2">
+                <i class="fas fa-times"></i>
+              </a>
             </th:block>
             <a href="javascript:void(0)" class="color-danger">
               <i class="far fa-trash-alt" onclick="confirmDeleteRecruitment(event)">

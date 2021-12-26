@@ -35,6 +35,11 @@ public class WorkRequestFindJobServiceImpl implements WorkRequestFindJobService 
     }
 
     @Override
+    public boolean cancel(WorkRequestFindJob obj) throws DataAccessException {
+        return workRequestFindJobRepository.cancel(obj);
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return workRequestFindJobRepository.delete(id);
     }

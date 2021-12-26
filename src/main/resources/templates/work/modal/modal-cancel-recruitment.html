@@ -1,0 +1,31 @@
+<div class="modal fade" id="cancelRecruitmentModal" tabindex="-1" role="dialog" aria-labelledby="cancelRecruitmentModalLabel"
+     aria-hidden="true" th:fragment="cancelRecruitmentModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="text-center">
+          <form id="cancelForm" method="post" th:object="${cancelRequest}" th:action="@{/work/recruitment/cancel}">
+            <input type="hidden" th:field="${recruitmentPost.workRequestRecruitmentId}">
+            <div class="form-group">
+              <label>Lý do hủy</label>
+              <input type="text" class="form-control" th:field="${recruitmentPost.workRequestRecruitmentNote}">
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <a href="javascript:void(0)" onclick="document.getElementById('cancelForm').submit();"
+           class="btn btn-danger">Xác nhận</a>
+        <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

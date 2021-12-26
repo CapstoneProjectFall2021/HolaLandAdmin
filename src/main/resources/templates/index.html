@@ -78,6 +78,12 @@
   <th:block th:if="${page == 4 || page == 5}">
     <div th:replace="work/modal/modal-confirm-approve :: confirmApproveModal"></div>
   </th:block>
+  <th:block th:if="${page == 4 && recruitmentPost != null}">
+    <div th:replace="work/modal/modal-cancel-recruitment :: cancelRecruitmentModal"></div>
+  </th:block>
+  <th:block th:if="${page == 5 && findJobPost != null}">
+    <div th:replace="work/modal/modal-cancel-find-job :: cancelFindJobModal"></div>
+  </th:block>
   <th:block th:if="${page == 4 && workRecruitment != null}">
     <div th:replace="work/modal/modal-show-detail-recruitment :: showDetailRecruitmentModal"></div>
   </th:block>
@@ -207,8 +213,18 @@
       myModal.show();
   </script>
 
+  <script th:if="${page==4 && recruitmentPost != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('cancelRecruitmentModal'));
+      myModal.show();
+  </script>
+
   <script th:if="${workFindJob != null}">
       const myModal = new bootstrap.Modal(document.getElementById('showDetailFindJobModal'));
+      myModal.show();
+  </script>
+
+  <script th:if="${page==5 && findJobPost != null}">
+      const myModal = new bootstrap.Modal(document.getElementById('cancelFindJobModal'));
       myModal.show();
   </script>
 

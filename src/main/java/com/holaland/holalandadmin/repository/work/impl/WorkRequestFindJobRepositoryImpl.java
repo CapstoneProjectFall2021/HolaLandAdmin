@@ -40,6 +40,15 @@ public class WorkRequestFindJobRepositoryImpl implements WorkRequestFindJobRepos
     }
 
     @Override
+    public boolean cancel(WorkRequestFindJob obj) throws DataAccessException {
+        return jdbcTemplate.update(
+                CANCEL_FIND_JOB,
+                obj.getWorkRequestFindJobNote(),
+                obj.getWorkRequestFindJobId()
+        ) > 0;
+    }
+
+    @Override
     public boolean delete(int id) throws DataAccessException {
         return jdbcTemplate.update(WORK_REQUEST_FIND_JOB_DELETED_ONE, id) > 0;
     }
